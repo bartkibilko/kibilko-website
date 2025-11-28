@@ -127,7 +127,7 @@ if (contactForm) {
             }
         } catch (error) {
             // Show error notification
-            showNotification('❌ Coś poszło nie tak. Napisz bezpośrednio na: bartosz@kibilko.pl', 'error');
+            showNotification('❌ Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się przez LinkedIn.', 'error');
             console.error('Form submission error:', error);
         } finally {
             // Re-enable button
@@ -324,5 +324,5 @@ document.addEventListener('DOMContentLoaded', function() {
 // ==========================================
 
 console.log('%c👋 Hej! Widzę że znasz DevTools!', 'font-size: 20px; font-weight: bold; color: #2563eb;');
-console.log('%cJeśli szukasz programisty - skontaktuj się: bartosz@kibilko.pl', 'font-size: 14px; color: #64748b;');
+console.log('%cJeśli szukasz programisty - wypełnij formularz kontaktowy lub LinkedIn!', 'font-size: 14px; color: #64748b;');
 console.log('%cStrona zbudowana z czystego HTML, CSS i JavaScript - bez frameworków!', 'font-size: 12px; color: #10b981;');
