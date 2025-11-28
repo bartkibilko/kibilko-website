@@ -81,39 +81,59 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ==========================================
-// CONTACT FORM HANDLING
+// CONTACT FORM HANDLING - Web3Forms Integration
 // ==========================================
 
 const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
+
         // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
-        };
-        
-        // Create mailto link
-        const mailtoLink = `mailto:bartosz@kibilko.pl?subject=${encodeURIComponent('Kontakt: ' + formData.subject + ' - ' + formData.name)}&body=${encodeURIComponent(
-            `Imię i nazwisko: ${formData.name}\n` +
-            `Email: ${formData.email}\n` +
-            `Temat: ${formData.subject}\n\n` +
-            `Wiadomość:\n${formData.message}`
-        )}`;
-        
-        // Open email client
-        window.location.href = mailtoLink;
-        
-        // Show success message
-        alert('Otwiera się Twój klient email. Jeśli nie działa, napisz bezpośrednio na: bartosz@kibilko.pl');
-        
-        // Reset form
-        contactForm.reset();
+        const formData = new FormData(contactForm);
+
+        // Disable submit button and show loading state
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+            <span style="display: inline-flex; align-items: center;">
+                <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation: spin 1s linear infinite;">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-opacity="0.25"></circle>
+                    <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" opacity="0.75"></path>
+                </svg>
+                Wysyłanie...
+            </span>
+        `;
+
+        try {
+            // Send to Web3Forms
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Show success notification
+                showNotification('✅ Wiadomość wysłana! Odpowiem w ciągu 24h.', 'success');
+
+                // Reset form
+                contactForm.reset();
+            } else {
+                throw new Error('Błąd serwera');
+            }
+        } catch (error) {
+            // Show error notification
+            showNotification('❌ Coś poszło nie tak. Napisz bezpośrednio na: bartosz@kibilko.pl', 'error');
+            console.error('Form submission error:', error);
+        } finally {
+            // Re-enable button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
     });
 }
 
@@ -185,30 +205,36 @@ function copyToClipboard(text) {
     }
 }
 
-function showNotification(message) {
+function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
     notification.textContent = message;
+
+    // Set background color based on type
+    const bgColor = type === 'success' ? '#10b981' : '#ef4444';
+
     notification.style.cssText = `
         position: fixed;
-        bottom: 2rem;
+        top: 2rem;
         right: 2rem;
-        background-color: var(--color-success);
+        background-color: ${bgColor};
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 0.5rem;
         box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         z-index: 9999;
         animation: slideIn 0.3s ease;
+        font-weight: 500;
+        max-width: 90%;
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     setTimeout(() => {
         notification.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => {
             document.body.removeChild(notification);
         }, 300);
-    }, 3000);
+    }, 5000);
 }
 
 // Add CSS animations
@@ -224,7 +250,7 @@ style.textContent = `
             opacity: 1;
         }
     }
-    
+
     @keyframes slideOut {
         from {
             transform: translateX(0);
@@ -233,6 +259,15 @@ style.textContent = `
         to {
             transform: translateX(100%);
             opacity: 0;
+        }
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
         }
     }
 `;

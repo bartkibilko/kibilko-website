@@ -412,7 +412,13 @@
                 </div>
 
                 <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="b4662f77-a2a7-4d0e-a8c9-f67bf7872325">
+
+                        <!-- Honeypot Spam Protection -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                         <div class="form-group">
                             <label for="company">Firma</label>
                             <input type="text" id="company" name="company" required>
@@ -427,10 +433,10 @@
                             <label for="subject">Temat</label>
                             <select id="subject" name="subject" required>
                                 <option value="">Wybierz...</option>
-                                <option value="project">Wycena projektu</option>
-                                <option value="longterm">Współpraca długoterminowa</option>
-                                <option value="consulting">Consulting</option>
-                                <option value="other">Inne</option>
+                                <option value="Wycena projektu">Wycena projektu</option>
+                                <option value="Współpraca długoterminowa">Współpraca długoterminowa</option>
+                                <option value="Consulting">Consulting</option>
+                                <option value="Inne">Inne</option>
                             </select>
                         </div>
 
@@ -439,7 +445,7 @@
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-full">
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
                             Wyślij zapytanie
                             <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
