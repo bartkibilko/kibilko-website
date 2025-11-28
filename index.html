@@ -50,15 +50,15 @@
                     <div class="hero-stats">
                         <div class="stat">
                             <span class="stat-number">13+</span>
-                            <span class="stat-label">lat</span>
+                            <span class="stat-label">lat doświadczenia</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">B2B</span>
-                            <span class="stat-label">JDG</span>
+                            <span class="stat-label">Faktura VAT</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">Remote</span>
-                            <span class="stat-label">100%</span>
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Remote</span>
                         </div>
                     </div>
                 </div>
@@ -350,30 +350,6 @@
                     </div>
 
                     <div class="contact-methods">
-                        <a href="mailto:bartosz@kibilko.pl" class="contact-method">
-                            <div class="contact-icon">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>bartosz@kibilko.pl</p>
-                            </div>
-                        </a>
-
-                        <a href="tel:+48513991050" class="contact-method">
-                            <div class="contact-icon">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4>Telefon</h4>
-                                <p>+48 513 991 050</p>
-                            </div>
-                        </a>
-
                         <a href="https://linkedin.com/in/bartoszkibilko" target="_blank" rel="noopener noreferrer" class="contact-method">
                             <div class="contact-icon">
                                 <svg fill="currentColor" viewBox="0 0 24 24">
@@ -405,14 +381,20 @@
                             <strong>Forma współpracy</strong>
                         </div>
                         <p>
-                            JDG | Faktura VAT | Umowa B2B<br>
-                            Full remote | Elastyczne modele rozliczenia
+                            Współpraca B2B • Faktura VAT<br>
+                            Full remote • Elastyczne rozliczenia
                         </p>
                     </div>
                 </div>
 
                 <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="b4662f77-a2a7-4d0e-a8c9-f67bf7872325">
+
+                        <!-- Honeypot Spam Protection -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                         <div class="form-group">
                             <label for="company">Firma</label>
                             <input type="text" id="company" name="company" required>
@@ -427,10 +409,10 @@
                             <label for="subject">Temat</label>
                             <select id="subject" name="subject" required>
                                 <option value="">Wybierz...</option>
-                                <option value="project">Wycena projektu</option>
-                                <option value="longterm">Współpraca długoterminowa</option>
-                                <option value="consulting">Consulting</option>
-                                <option value="other">Inne</option>
+                                <option value="Wycena projektu">Wycena projektu</option>
+                                <option value="Współpraca długoterminowa">Współpraca długoterminowa</option>
+                                <option value="Consulting">Consulting</option>
+                                <option value="Inne">Inne</option>
                             </select>
                         </div>
 
@@ -439,7 +421,7 @@
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-full">
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
                             Wyślij zapytanie
                             <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -462,9 +444,9 @@
                 <div class="footer-info">
                     <h3>Bartosz Kibiłko</h3>
                     <p>PHP Developer B2B</p>
-                    <p class="footer-tagline">JDG | NIP: 5833185730</p>
+                    <p class="footer-tagline">NIP: 5833185730</p>
                 </div>
-                
+
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Nawigacja</h4>
@@ -475,21 +457,19 @@
                             <li><a href="#contact">Kontakt</a></li>
                         </ul>
                     </div>
-                    
+
                     <div class="footer-column">
-                        <h4>Kontakt B2B</h4>
+                        <h4>Współpraca</h4>
                         <ul>
-                            <li><a href="mailto:bartosz@kibilko.pl">bartosz@kibilko.pl</a></li>
-                            <li><a href="tel:+48513991050">+48 513 991 050</a></li>
+                            <li><a href="https://linkedin.com/in/bartoszkibilko" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                             <li>NIP: 5833185730</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2025 Bartosz Kibiłko. Wszystkie prawa zastrzeżone.</p>
-                <p class="footer-tech">Jednoosobowa działalność gospodarcza</p>
             </div>
         </div>
     </footer>
