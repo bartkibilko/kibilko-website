@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
-            
+
             // Animate hamburger icon
             const spans = this.querySelectorAll('span');
             if (navLinks.classList.contains('active')) {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Close mobile menu on link click
     const navLinkItems = document.querySelectorAll('.nav-links a');
     navLinkItems.forEach(link => {
@@ -38,44 +38,43 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Navbar scroll effect
     const nav = document.querySelector('.nav');
-    let lastScroll = 0;
-    
+
     window.addEventListener('scroll', function() {
         const currentScroll = window.pageYOffset;
-        
+
         if (currentScroll > 100) {
             nav.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.1)';
         } else {
             nav.style.boxShadow = 'none';
         }
-        
-        lastScroll = currentScroll;
     });
-    
+
     // Active navigation link on scroll
     const sections = document.querySelectorAll('section[id]');
-    
+
     function updateActiveLink() {
         const scrollY = window.pageYOffset;
-        
+
+        // Remove all active-link classes
+        navLinkItems.forEach(link => link.classList.remove('active-link'));
+
         sections.forEach(section => {
             const sectionHeight = section.offsetHeight;
             const sectionTop = section.offsetTop - 100;
             const sectionId = section.getAttribute('id');
-            const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
-            
+            const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]:not(.btn-primary)`);
+
             if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLinkItems.forEach(link => link.style.color = '');
                 if (navLink) {
-                    navLink.style.color = 'var(--color-primary)';
+                    navLink.classList.add('active-link');
                 }
             }
         });
     }
-    
+
     window.addEventListener('scroll', updateActiveLink);
     updateActiveLink();
 });
@@ -117,20 +116,15 @@ if (contactForm) {
             const result = await response.json();
 
             if (result.success) {
-                // Show success notification
-                showNotification('✅ Wiadomość wysłana! Odpowiem w ciągu 24h.', 'success');
-
-                // Reset form
+                showNotification('Wiadomosc wyslana! Odpowiem w ciagu 24h.', 'success');
                 contactForm.reset();
             } else {
-                throw new Error('Błąd serwera');
+                throw new Error('Server error');
             }
         } catch (error) {
-            // Show error notification
-            showNotification('❌ Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się przez LinkedIn.', 'error');
+            showNotification('Cos poszlo nie tak. Sprobuj ponownie lub skontaktuj sie przez LinkedIn.', 'error');
             console.error('Form submission error:', error);
         } finally {
-            // Re-enable button
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalBtnText;
         }
@@ -138,37 +132,129 @@ if (contactForm) {
 }
 
 // ==========================================
-// SCROLL REVEAL ANIMATIONS
+// SCROLL REVEAL ANIMATIONS (STAGGERED)
 // ==========================================
 
 function revealOnScroll() {
-    const reveals = document.querySelectorAll('.service-card, .project-card, .tech-item, .company-card');
-    
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < windowHeight - elementVisible) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
+    const revealGroups = [
+        { selector: '.service-card', parent: '.services-grid' },
+        { selector: '.client-card', parent: '.clients-grid' },
+        { selector: '.tech-item', parent: '.tech-grid' },
+        { selector: '.stack-category', parent: '.stack-categories' },
+        { selector: '.stat', parent: '.hero-stats' }
+    ];
+
+    revealGroups.forEach(group => {
+        const elements = document.querySelectorAll(group.selector);
+        elements.forEach((element, index) => {
+            const windowHeight = window.innerHeight;
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 100;
+
+            if (elementTop < windowHeight - elementVisible) {
+                // Stagger the delay based on index within parent
+                const delay = index * 80;
+                setTimeout(() => {
+                    element.classList.add('revealed');
+                }, delay);
+            }
+        });
     });
 }
 
-// Set initial state
+// Set initial state for animated elements
 document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('.service-card, .project-card, .tech-item, .company-card');
+    const animatedElements = document.querySelectorAll(
+        '.service-card, .client-card, .tech-item, .stack-category, .stat'
+    );
     animatedElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        element.classList.add('scroll-reveal');
     });
-    
+
+    // Trigger initial check
     revealOnScroll();
 });
 
 window.addEventListener('scroll', revealOnScroll);
+
+// ==========================================
+// COUNTER ANIMATION FOR STATS
+// ==========================================
+
+function animateCounters() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+
+    statNumbers.forEach(stat => {
+        if (stat.dataset.animated) return;
+
+        const rect = stat.getBoundingClientRect();
+        if (rect.top > window.innerHeight || rect.bottom < 0) return;
+
+        const text = stat.textContent.trim();
+
+        // Only animate numeric values
+        if (text === '13+') {
+            stat.dataset.animated = 'true';
+            animateNumber(stat, 0, 13, 1200, '+');
+        } else if (text === '100%') {
+            stat.dataset.animated = 'true';
+            animateNumber(stat, 0, 100, 1400, '%');
+        }
+    });
+}
+
+function animateNumber(element, start, end, duration, suffix) {
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (end - start) * eased);
+
+        element.textContent = current + suffix;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
+window.addEventListener('scroll', animateCounters);
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(animateCounters, 500);
+});
+
+// ==========================================
+// BACK TO TOP BUTTON
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTop = document.createElement('button');
+    backToTop.innerHTML = `<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>`;
+    backToTop.className = 'back-to-top';
+    backToTop.setAttribute('aria-label', 'Back to top');
+    document.body.appendChild(backToTop);
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 400) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
 
 // ==========================================
 // PERFORMANCE: LAZY LOADING IMAGES
@@ -176,7 +262,7 @@ window.addEventListener('scroll', revealOnScroll);
 
 document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('img[data-src]');
-    
+
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -187,12 +273,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     images.forEach(img => imageObserver.observe(img));
 });
 
 // ==========================================
-// UTILITY: COPY EMAIL TO CLIPBOARD
+// UTILITY: COPY TO CLIPBOARD
 // ==========================================
 
 function copyToClipboard(text) {
@@ -200,7 +286,7 @@ function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(() => {
             showNotification('Email skopiowany do schowka!');
         }).catch(err => {
-            console.error('Błąd kopiowania:', err);
+            console.error('Copy error:', err);
         });
     }
 }
@@ -209,7 +295,6 @@ function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
     notification.textContent = message;
 
-    // Set background color based on type
     const bgColor = type === 'success' ? '#10b981' : '#ef4444';
 
     notification.style.cssText = `
@@ -219,25 +304,31 @@ function showNotification(message, type = 'success') {
         background-color: ${bgColor};
         color: white;
         padding: 1rem 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.2);
         z-index: 9999;
         animation: slideIn 0.3s ease;
         font-weight: 500;
         max-width: 90%;
+        backdrop-filter: blur(10px);
     `;
 
     document.body.appendChild(notification);
 
     setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
+        notification.style.animation = 'slideOut 0.3s ease forwards';
         setTimeout(() => {
-            document.body.removeChild(notification);
+            if (notification.parentNode) {
+                document.body.removeChild(notification);
+            }
         }, 300);
-    }, 5000);
+    }, 4000);
 }
 
-// Add CSS animations
+// ==========================================
+// CSS ANIMATIONS (injected)
+// ==========================================
+
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
@@ -263,66 +354,29 @@ style.textContent = `
     }
 
     @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* Scroll reveal animation classes */
+    .scroll-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .scroll-reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
     }
 `;
 document.head.appendChild(style);
 
 // ==========================================
-// BACK TO TOP BUTTON (Optional)
-// ==========================================
-
-// Uncomment if you want a back-to-top button
-/*
-document.addEventListener('DOMContentLoaded', function() {
-    const backToTop = document.createElement('button');
-    backToTop.innerHTML = '↑';
-    backToTop.className = 'back-to-top';
-    backToTop.style.cssText = `
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        width: 3rem;
-        height: 3rem;
-        background-color: var(--color-primary);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        font-size: 1.5rem;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: 999;
-    `;
-    
-    document.body.appendChild(backToTop);
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTop.style.opacity = '1';
-        } else {
-            backToTop.style.opacity = '0';
-        }
-    });
-    
-    backToTop.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-});
-*/
-
-// ==========================================
 // CONSOLE MESSAGE (Easter egg)
 // ==========================================
 
-console.log('%c👋 Hej! Widzę że znasz DevTools!', 'font-size: 20px; font-weight: bold; color: #2563eb;');
-console.log('%cJeśli szukasz programisty - wypełnij formularz kontaktowy lub LinkedIn!', 'font-size: 14px; color: #64748b;');
-console.log('%cStrona zbudowana z czystego HTML, CSS i JavaScript - bez frameworków!', 'font-size: 12px; color: #10b981;');
+console.log('%cHej! Widzisz DevTools!', 'font-size: 20px; font-weight: bold; color: #2563eb;');
+console.log('%cSzukasz programisty? Wypelnij formularz kontaktowy lub LinkedIn!', 'font-size: 14px; color: #64748b;');
+console.log('%cStrona zbudowana z czystego HTML, CSS i JavaScript.', 'font-size: 12px; color: #10b981;');
