@@ -122,7 +122,7 @@ if (contactForm) {
                 throw new Error('Server error');
             }
         } catch (error) {
-            showNotification('Cos poszlo nie tak. Sprobuj ponownie lub skontaktuj sie przez LinkedIn.', 'error');
+            showNotification('Cos poszlo nie tak. Sprobuj ponownie lub skontaktuj sie przez LinkedIn.', 'error', 'https://www.linkedin.com/in/bartkibilko/');
             console.error('Form submission error:', error);
         } finally {
             submitBtn.disabled = false;
@@ -291,9 +291,22 @@ function copyToClipboard(text) {
     }
 }
 
-function showNotification(message, type = 'success') {
+function showNotification(message, type = 'success', linkUrl = null) {
     const notification = document.createElement('div');
-    notification.textContent = message;
+
+    if (linkUrl) {
+        const textNode = document.createTextNode(message.replace('LinkedIn', ''));
+        notification.appendChild(textNode);
+        const link = document.createElement('a');
+        link.href = linkUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'LinkedIn';
+        link.style.cssText = 'color: white; text-decoration: underline; font-weight: 700;';
+        notification.appendChild(link);
+    } else {
+        notification.textContent = message;
+    }
 
     const bgColor = type === 'success' ? '#10b981' : '#ef4444';
 
