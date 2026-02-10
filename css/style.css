@@ -170,6 +170,7 @@ ul {
     background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
     opacity: 0;
     transition: opacity var(--transition-base);
+    pointer-events: none;
 }
 
 .btn-primary:hover::after {

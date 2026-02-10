@@ -114,12 +114,14 @@ if (contactForm) {
             });
 
             const result = await response.json();
+            console.log('Web3Forms response:', result);
 
             if (result.success) {
                 showNotification('Wiadomosc wyslana! Odpowiem w ciagu 24h.', 'success');
                 contactForm.reset();
             } else {
-                throw new Error('Server error');
+                console.error('Web3Forms error:', result.message || result);
+                throw new Error(result.message || 'Server error');
             }
         } catch (error) {
             showNotification('Cos poszlo nie tak. Sprobuj ponownie lub skontaktuj sie przez LinkedIn.', 'error', 'https://www.linkedin.com/in/bartkibilko/');
