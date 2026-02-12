@@ -3,30 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PHP Developer B2B | Rozwiązania e-commerce i enterprise | NIP: 5833185730">
-    <meta name="keywords" content="PHP Developer B2B, Freelance PHP, E-commerce, Laminas, Symfony">
-    <title>PHP Developer B2B | Bartosz Kibiłko</title>
+    <meta name="description" content="Bartosz Kibiłko — PHP Developer B2B z Gdańska. 13+ lat doświadczenia w e-commerce i systemach enterprise. Laminas, Symfony, Magento, PostgreSQL.">
+    <title>Bartosz Kibiłko — PHP Developer B2B | Gdańsk</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bartosz Kibiłko — PHP Developer B2B">
+    <meta property="og:description" content="PHP Developer B2B z Gdańska. 13+ lat doświadczenia w e-commerce i systemach enterprise. Laminas, Symfony, Magento, PostgreSQL.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kibilko.pl/">
+    <meta property="og:locale" content="pl_PL">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.kibilko.pl/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bartosz Kibiłko",
+        "jobTitle": "PHP Developer B2B",
+        "url": "https://www.kibilko.pl",
+        "email": "bartosz@kibilko.pl",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Gdańsk",
+            "addressCountry": "PL"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/bartkibilko/"
+        ],
+        "knowsAbout": ["PHP", "Laminas", "Symfony", "Magento", "PostgreSQL", "E-commerce"]
+    }
+    </script>
 </head>
 <body>
+    <!-- Dot grid background -->
+    <div class="bg-grid" aria-hidden="true"></div>
+
     <!-- Navigation -->
     <nav class="nav">
         <div class="container">
             <div class="nav-content">
-                <a href="#hero" class="logo">BK</a>
+                <a href="#hero" class="logo">BK<span class="logo-dot">_</span></a>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 <ul class="nav-links">
+                    <li><a href="#about">O mnie</a></li>
                     <li><a href="#services">Usługi</a></li>
                     <li><a href="#stack">Technologie</a></li>
                     <li><a href="#clients">Klienci</a></li>
-                    <li><a href="#contact" class="btn-primary">Kontakt</a></li>
+                    <li><a href="#contact" class="btn-nav-cta">Kontakt</a></li>
                 </ul>
             </div>
         </div>
@@ -37,40 +75,62 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <div class="hero-badge">
+                        <span class="status-dot"></span>
+                        Gdańsk · B2B · Remote
+                    </div>
                     <h1 class="hero-title">
-                        <span class="gradient-text">PHP Developer</span><br>B2B Freelance
+                        <span class="hero-title-line">PHP</span>
+                        <span class="hero-title-line accent">Developer</span>
+                        <span class="hero-title-line dim">B2B Freelance</span>
                     </h1>
                     <p class="hero-subtitle">
-                        Rozwiązania e-commerce i enterprise. PHP 8.2, Laminas, Symfony, PostgreSQL.
+                        Rozwiązania e-commerce i enterprise.<br>
+                        PHP 8, Magento, Laminas, Symfony, MySQL, PostgreSQL.
                     </p>
                     <div class="hero-cta">
-                        <a href="#contact" class="btn btn-primary">Wycena projektu</a>
-                        <a href="#services" class="btn btn-secondary">Zakres usług</a>
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Wycena projektu</span>
+                            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                        <a href="#services" class="btn btn-ghost">Zakres usług</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="profile-card">
+                        <div class="profile-card-glow"></div>
+                        <img src="img/profile.jpg" alt="Bartosz Kibiłko" class="profile-img">
                     </div>
                     <div class="hero-stats">
                         <div class="stat">
-                            <span class="stat-number">13+</span>
-                            <span class="stat-label">lat doświadczenia</span>
+                            <span class="stat-number">14 000+</span>
+                            <span class="stat-label">filiżanek kawy od 2013</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">B2B</span>
-                            <span class="stat-label">Faktura VAT</span>
+                            <span class="stat-number">PHP 5.3→8.4</span>
+                            <span class="stat-label">wszystkie wersje</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Remote</span>
+                            <span class="stat-number">Gdańsk</span>
+                            <span class="stat-label">full remote</span>
                         </div>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="profile-card">
-                        <img src="img/profile.jpg" alt="Bartosz Kibiłko" class="profile-img">
-                        <div class="status-badge">
-                            <span class="status-dot"></span>
-                            Dostępny na projekty
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+        <div class="hero-gradient-orb hero-orb-1" aria-hidden="true"></div>
+        <div class="hero-gradient-orb hero-orb-2" aria-hidden="true"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <p class="about-text">
+                    PHP developer z Gdańska, komercyjnie od 2013 roku. Specjalizuję się w systemach e-commerce i aplikacjach enterprise — od platform Magento po dedykowane rozwiązania backendowe. Współpracuję B2B z polskimi firmami technologicznymi i spółkami giełdowymi. W codziennej pracy wspieram się narzędziami AI, w tym Claude Code.
+                </p>
             </div>
         </div>
     </section>
@@ -79,69 +139,81 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Usługi</span>
+                <span class="section-tag">// Usługi</span>
                 <h2 class="section-title">Zakres współpracy B2B</h2>
             </div>
-            
+
             <div class="services-grid">
                 <div class="service-card">
+                    <div class="service-number">01</div>
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
                     </div>
-                    <h3>E-commerce Development</h3>
-                    <p>Magento 2, custom platforms, payment integrations, marketplace connections.</p>
+                    <h3>Platformy e-commerce</h3>
+                    <p>Magento 2, dedykowane platformy sprzedażowe, integracje płatności i marketplace.</p>
+                    <div class="service-card-line"></div>
                 </div>
 
                 <div class="service-card">
+                    <div class="service-number">02</div>
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3>API Integrations</h3>
-                    <p>REST APIs, marketplace integrations, search engines, payment gateways.</p>
+                    <h3>Integracje API</h3>
+                    <p>REST API, integracje z marketplace, wyszukiwarki, bramki płatności, systemy ERP.</p>
+                    <div class="service-card-line"></div>
                 </div>
 
                 <div class="service-card">
+                    <div class="service-number">03</div>
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                         </svg>
                     </div>
-                    <h3>Legacy Modernization</h3>
-                    <p>PHP upgrades (5.x → 8.2+), refactoring, performance optimization.</p>
+                    <h3>Modernizacja legacy</h3>
+                    <p>Migracje PHP 5.x → 8+, refactoring, optymalizacja wydajności, aktualizacje frameworków.</p>
+                    <div class="service-card-line"></div>
                 </div>
 
                 <div class="service-card">
+                    <div class="service-number">04</div>
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                         </svg>
                     </div>
-                    <h3>Backend Development</h3>
-                    <p>Custom PHP applications, microservices, message queues, databases.</p>
+                    <h3>Systemy backend</h3>
+                    <p>Aplikacje PHP, mikroserwisy, kolejki wiadomości, bazy danych, panele administracyjne.</p>
+                    <div class="service-card-line"></div>
                 </div>
 
                 <div class="service-card">
+                    <div class="service-number">05</div>
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                         </svg>
                     </div>
-                    <h3>Consulting</h3>
-                    <p>Architecture review, code review, technology consulting, mentoring.</p>
+                    <h3>Konsulting techniczny</h3>
+                    <p>Audyty architektury, code review, dobór technologii, wsparcie zespołów developerskich.</p>
+                    <div class="service-card-line"></div>
                 </div>
 
                 <div class="service-card">
+                    <div class="service-number">06</div>
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-2.47 2.47a2.25 2.25 0 00-.659 1.59v.56c0 1.243-1.007 2.25-2.25 2.25h-3.242a2.25 2.25 0 01-2.25-2.25v-.56a2.25 2.25 0 00-.659-1.59L5 14.5m14 0h.75a2.25 2.25 0 012.25 2.25v3a2.25 2.25 0 01-2.25 2.25h-15A2.25 2.25 0 012.5 19.75v-3A2.25 2.25 0 014.75 14.5H5"></path>
                         </svg>
                     </div>
-                    <h3>Remote Work</h3>
-                    <p>Full remote projects, flexible cooperation models, proven workflows.</p>
+                    <h3>Wdrożenia AI</h3>
+                    <p>Integracja API Claude i OpenAI w istniejące systemy, automatyzacja procesów, wdrażanie zespołów w AI workflow.</p>
+                    <div class="service-card-line"></div>
                 </div>
             </div>
         </div>
@@ -151,55 +223,52 @@
     <section id="stack" class="tech-stack">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Technologie</span>
+                <span class="section-tag">// Technologie</span>
                 <h2 class="section-title">Tech Stack</h2>
             </div>
 
             <div class="stack-categories">
                 <div class="stack-category">
-                    <h3>Backend</h3>
+                    <h3><span class="cat-marker"></span>Backend / Frameworki</h3>
                     <div class="tech-grid">
                         <div class="tech-item featured">
-                            <span class="tech-name">PHP 8.2</span>
-                        </div>
-                        <div class="tech-item featured">
-                            <span class="tech-name">Laminas Framework</span>
-                        </div>
-                        <div class="tech-item featured">
-                            <span class="tech-name">Symfony 4/5/6</span>
+                            <span class="tech-name">PHP 8+</span>
                         </div>
                         <div class="tech-item">
-                            <span class="tech-name">Zend Framework</span>
+                            <span class="tech-name">Laminas (Zend)</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">Symfony</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="stack-category">
-                    <h3>Databases</h3>
+                    <h3><span class="cat-marker"></span>Bazy danych</h3>
                     <div class="tech-grid">
                         <div class="tech-item featured">
                             <span class="tech-name">PostgreSQL</span>
                         </div>
-                        <div class="tech-item featured">
+                        <div class="tech-item">
                             <span class="tech-name">MySQL</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="stack-category">
-                    <h3>E-commerce</h3>
+                    <h3><span class="cat-marker"></span>E-commerce</h3>
                     <div class="tech-grid">
                         <div class="tech-item">
-                            <span class="tech-name">Magento 2</span>
+                            <span class="tech-name">Magento 1 EE</span>
                         </div>
                         <div class="tech-item">
-                            <span class="tech-name">Magento Enterprise</span>
+                            <span class="tech-name">Magento 2</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="stack-category">
-                    <h3>Integration</h3>
+                    <h3><span class="cat-marker"></span>Integracje</h3>
                     <div class="tech-grid">
                         <div class="tech-item">
                             <span class="tech-name">REST APIs</span>
@@ -217,12 +286,12 @@
                 </div>
 
                 <div class="stack-category">
-                    <h3>DevOps</h3>
+                    <h3><span class="cat-marker"></span>DevOps</h3>
                     <div class="tech-grid">
-                        <div class="tech-item featured">
+                        <div class="tech-item ">
                             <span class="tech-name">Docker</span>
                         </div>
-                        <div class="tech-item featured">
+                        <div class="tech-item ">
                             <span class="tech-name">Git</span>
                         </div>
                         <div class="tech-item">
@@ -232,16 +301,13 @@
                 </div>
 
                 <div class="stack-category">
-                    <h3>Frontend</h3>
+                    <h3><span class="cat-marker"></span>Narzędzia AI</h3>
                     <div class="tech-grid">
-                        <div class="tech-item">
-                            <span class="tech-name">jQuery</span>
+                        <div class="tech-item featured">
+                            <span class="tech-name">Claude Code</span>
                         </div>
                         <div class="tech-item">
-                            <span class="tech-name">DataTables</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="tech-name">JavaScript</span>
+                            <span class="tech-name">Cursor</span>
                         </div>
                     </div>
                 </div>
@@ -253,10 +319,10 @@
     <section id="clients" class="projects">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Referencje</span>
+                <span class="section-tag">// Referencje</span>
                 <h2 class="section-title">Klienci</h2>
                 <p class="section-description">
-                    Projekty B2B dla największych polskich firm
+                    Wybrane projekty B2B dla polskich spółek i firm technologicznych
                 </p>
             </div>
 
@@ -264,10 +330,10 @@
                 <div class="client-card">
                     <div class="client-logo">IC</div>
                     <h3>Inter Cars S.A.</h3>
-                    <p class="client-industry">Automotive</p>
-                    <p class="client-desc">Projekty backend PHP 8.2 + Laminas + PostgreSQL</p>
+                    <p class="client-industry">Motoryzacja / Dystrybucja</p>
+                    <p class="client-desc">Systemy backend: PHP, PostgreSQL</p>
                     <div class="client-tech">
-                        <span>PHP 8.2</span>
+                        <span>PHP</span>
                         <span>Laminas</span>
                         <span>PostgreSQL</span>
                     </div>
@@ -276,7 +342,7 @@
                 <div class="client-card">
                     <div class="client-logo">LPP</div>
                     <h3>LPP S.A.</h3>
-                    <p class="client-industry">Fashion Retail</p>
+                    <p class="client-industry">Moda / Retail</p>
                     <p class="client-desc">Platforma e-commerce Magento Enterprise</p>
                     <div class="client-tech">
                         <span>Magento EE</span>
@@ -301,7 +367,7 @@
                     <div class="client-logo">TR</div>
                     <h3>Traffit</h3>
                     <p class="client-industry">HR Tech</p>
-                    <p class="client-desc">ATS Platform development</p>
+                    <p class="client-desc">Rozwój platformy ATS (Applicant Tracking System)</p>
                     <div class="client-tech">
                         <span>Symfony</span>
                         <span>Elasticsearch</span>
@@ -312,8 +378,8 @@
                 <div class="client-card">
                     <div class="client-logo">PPG</div>
                     <h3>Polska Press Grupa</h3>
-                    <p class="client-industry">Media</p>
-                    <p class="client-desc">Portal naszemiasto.pl</p>
+                    <p class="client-industry">Media / Wydawnictwa</p>
+                    <p class="client-desc">Rozwój portalu naszemiasto.pl</p>
                     <div class="client-tech">
                         <span>PHP</span>
                         <span>MySQL</span>
@@ -321,17 +387,6 @@
                     </div>
                 </div>
 
-                <div class="client-card">
-                    <div class="client-logo">+</div>
-                    <h3>Inne projekty</h3>
-                    <p class="client-industry">B2B Freelance</p>
-                    <p class="client-desc">Projekty pod NDA dla klientów korporacyjnych</p>
-                    <div class="client-tech">
-                        <span>PHP</span>
-                        <span>Symfony</span>
-                        <span>API</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -342,7 +397,7 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="section-header">
-                        <span class="section-tag">Kontakt</span>
+                        <span class="section-tag">// Kontakt</span>
                         <h2 class="section-title">Wycena projektu</h2>
                         <p class="section-description">
                             Współpraca B2B | Faktura VAT
@@ -350,6 +405,18 @@
                     </div>
 
                     <div class="contact-methods">
+                        <a href="mailto:bartosz@kibilko.pl" class="contact-method">
+                            <div class="contact-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>bartosz@kibilko.pl</p>
+                            </div>
+                        </a>
+
                         <a href="https://www.linkedin.com/in/bartkibilko/" target="_blank" rel="noopener noreferrer" class="contact-method">
                             <div class="contact-icon">
                                 <svg fill="currentColor" viewBox="0 0 24 24">
@@ -361,18 +428,6 @@
                                 <p>linkedin.com/in/bartkibilko</p>
                             </div>
                         </a>
-
-                        <div class="contact-method">
-                            <div class="contact-icon">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4>NIP</h4>
-                                <p>5833185730</p>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="availability-card">
@@ -381,8 +436,8 @@
                             <strong>Forma współpracy</strong>
                         </div>
                         <p>
-                            Współpraca B2B • Faktura VAT<br>
-                            Full remote • Elastyczne rozliczenia
+                            B2B &bull; Faktura VAT &bull; NIP: 5833185730<br>
+                            Full remote &bull; Gdańsk &bull; Elastyczne rozliczenia
                         </p>
                     </div>
                 </div>
@@ -397,12 +452,12 @@
 
                         <div class="form-group">
                             <label for="company">Firma</label>
-                            <input type="text" id="company" name="company" required>
+                            <input type="text" id="company" name="company" required placeholder="Nazwa firmy">
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required placeholder="email@firma.pl">
                         </div>
 
                         <div class="form-group">
@@ -418,11 +473,11 @@
 
                         <div class="form-group">
                             <label for="message">Opis projektu</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" required placeholder="Opisz swój projekt..."></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
-                            Wyślij zapytanie
+                            <span>Wyślij zapytanie</span>
                             <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                             </svg>
@@ -443,7 +498,7 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <h3>Bartosz Kibiłko</h3>
-                    <p>PHP Developer B2B</p>
+                    <p>PHP Developer B2B · Gdańsk</p>
                     <p class="footer-tagline">NIP: 5833185730</p>
                 </div>
 
@@ -451,6 +506,7 @@
                     <div class="footer-column">
                         <h4>Nawigacja</h4>
                         <ul>
+                            <li><a href="#about">O mnie</a></li>
                             <li><a href="#services">Usługi</a></li>
                             <li><a href="#stack">Technologie</a></li>
                             <li><a href="#clients">Klienci</a></li>
@@ -459,10 +515,10 @@
                     </div>
 
                     <div class="footer-column">
-                        <h4>Współpraca</h4>
+                        <h4>Kontakt</h4>
                         <ul>
+                            <li><a href="mailto:bartosz@kibilko.pl">bartosz@kibilko.pl</a></li>
                             <li><a href="https://www.linkedin.com/in/bartkibilko/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                            <li>NIP: 5833185730</li>
                         </ul>
                     </div>
                 </div>

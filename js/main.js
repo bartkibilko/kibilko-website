@@ -43,12 +43,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('.nav');
 
     window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > 100) {
-            nav.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.1)';
+        if (window.pageYOffset > 50) {
+            nav.classList.add('scrolled');
         } else {
-            nav.style.boxShadow = 'none';
+            nav.classList.remove('scrolled');
         }
     });
 
@@ -58,14 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateActiveLink() {
         const scrollY = window.pageYOffset;
 
-        // Remove all active-link classes
         navLinkItems.forEach(link => link.classList.remove('active-link'));
 
         sections.forEach(section => {
             const sectionHeight = section.offsetHeight;
             const sectionTop = section.offsetTop - 100;
             const sectionId = section.getAttribute('id');
-            const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]:not(.btn-primary)`);
+            const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]:not(.btn-nav-cta)`);
 
             if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
                 if (navLink) {
@@ -90,14 +87,12 @@ if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Get form data
         const formData = new FormData(contactForm);
 
-        // Disable submit button and show loading state
         const originalBtnText = submitBtn.innerHTML;
         submitBtn.disabled = true;
         submitBtn.innerHTML = `
-            <span style="display: inline-flex; align-items: center;">
+            <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
                 <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation: spin 1s linear infinite;">
                     <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-opacity="0.25"></circle>
                     <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" opacity="0.75"></path>
@@ -107,7 +102,6 @@ if (contactForm) {
         `;
 
         try {
-            // Send to Web3Forms
             const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 body: formData
@@ -152,7 +146,6 @@ function revealOnScroll() {
             const elementVisible = 100;
 
             if (elementTop < windowHeight - elementVisible) {
-                // Stagger the delay based on index within parent
                 const delay = index * 80;
                 setTimeout(() => {
                     element.classList.add('revealed');
@@ -162,7 +155,6 @@ function revealOnScroll() {
     });
 }
 
-// Set initial state for animated elements
 document.addEventListener('DOMContentLoaded', function() {
     const animatedElements = document.querySelectorAll(
         '.service-card, .client-card, .tech-item, .stack-category, .stat'
@@ -171,7 +163,6 @@ document.addEventListener('DOMContentLoaded', function() {
         element.classList.add('scroll-reveal');
     });
 
-    // Trigger initial check
     revealOnScroll();
 });
 
@@ -192,15 +183,31 @@ function animateCounters() {
 
         const text = stat.textContent.trim();
 
-        // Only animate numeric values
-        if (text === '13+') {
+        if (text === '14 000+') {
             stat.dataset.animated = 'true';
-            animateNumber(stat, 0, 13, 1200, '+');
-        } else if (text === '100%') {
-            stat.dataset.animated = 'true';
-            animateNumber(stat, 0, 100, 1400, '%');
+            animateCoffee(stat, 0, 14000, 2000);
         }
     });
+}
+
+function animateCoffee(element, start, end, duration) {
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (end - start) * eased);
+
+        element.textContent = current.toLocaleString('pl-PL') + '+';
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+
+    requestAnimationFrame(update);
 }
 
 function animateNumber(element, start, end, duration, suffix) {
@@ -210,7 +217,6 @@ function animateNumber(element, start, end, duration, suffix) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
 
-        // Ease out cubic
         const eased = 1 - Math.pow(1 - progress, 3);
         const current = Math.floor(start + (end - start) * eased);
 
@@ -302,34 +308,40 @@ function showNotification(message, type = 'success', linkUrl = null) {
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         link.textContent = 'LinkedIn';
-        link.style.cssText = 'color: white; text-decoration: underline; font-weight: 700;';
+        link.style.cssText = 'color: inherit; text-decoration: underline; font-weight: 700;';
         notification.appendChild(link);
     } else {
         notification.textContent = message;
     }
 
-    const bgColor = type === 'success' ? '#10b981' : '#ef4444';
+    const bgColor = type === 'success' ? 'rgba(74, 222, 128, 0.15)' : 'rgba(248, 113, 113, 0.15)';
+    const borderColor = type === 'success' ? 'rgba(74, 222, 128, 0.3)' : 'rgba(248, 113, 113, 0.3)';
+    const textColor = type === 'success' ? '#4ade80' : '#f87171';
 
     notification.style.cssText = `
         position: fixed;
         top: 2rem;
         right: 2rem;
-        background-color: ${bgColor};
-        color: white;
+        background: ${bgColor};
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        color: ${textColor};
         padding: 1rem 1.5rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.2);
+        border-radius: 10px;
+        border: 1px solid ${borderColor};
+        box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
         z-index: 9999;
-        animation: slideIn 0.3s ease;
+        animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.875rem;
         font-weight: 500;
         max-width: 90%;
-        backdrop-filter: blur(10px);
     `;
 
     document.body.appendChild(notification);
 
     setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease forwards';
+        notification.style.animation = 'slideOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards';
         setTimeout(() => {
             if (notification.parentNode) {
                 document.body.removeChild(notification);
@@ -371,7 +383,6 @@ style.textContent = `
         to { transform: rotate(360deg); }
     }
 
-    /* Scroll reveal animation classes */
     .scroll-reveal {
         opacity: 0;
         transform: translateY(24px);
@@ -387,9 +398,9 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ==========================================
-// CONSOLE MESSAGE (Easter egg)
+// CONSOLE MESSAGE
 // ==========================================
 
-console.log('%cHej! Widzisz DevTools!', 'font-size: 20px; font-weight: bold; color: #2563eb;');
-console.log('%cSzukasz programisty? Wypelnij formularz kontaktowy lub LinkedIn!', 'font-size: 14px; color: #64748b;');
-console.log('%cStrona zbudowana z czystego HTML, CSS i JavaScript.', 'font-size: 12px; color: #10b981;');
+console.log('%cBK_', 'font-size: 24px; font-weight: bold; color: #d4a843; font-family: monospace;');
+console.log('%cSzukasz programisty? Wypelnij formularz kontaktowy lub LinkedIn!', 'font-size: 13px; color: #8a8680; font-family: monospace;');
+console.log('%c> HTML + CSS + JavaScript', 'font-size: 11px; color: #5a5650; font-family: monospace;');
