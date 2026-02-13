@@ -398,6 +398,42 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ==========================================
+// COOKIE CONSENT
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('cookieAccept');
+    const rejectBtn = document.getElementById('cookieReject');
+
+    if (!banner) return;
+
+    // Hide banner if user already made a choice
+    if (localStorage.getItem('cookie-consent')) {
+        banner.remove();
+        return;
+    }
+
+    function hideBanner() {
+        banner.classList.add('hidden');
+        setTimeout(function() { banner.remove(); }, 400);
+    }
+
+    acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('cookie-consent', 'accepted');
+        hideBanner();
+        if (typeof loadGoogleAnalytics === 'function') {
+            loadGoogleAnalytics();
+        }
+    });
+
+    rejectBtn.addEventListener('click', function() {
+        localStorage.setItem('cookie-consent', 'rejected');
+        hideBanner();
+    });
+});
+
+// ==========================================
 // CONSOLE MESSAGE
 // ==========================================
 
