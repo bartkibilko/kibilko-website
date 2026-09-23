@@ -80,8 +80,8 @@
       banner.className = 'consent';
       banner.setAttribute('aria-labelledby', 'consent-title');
       banner.innerHTML =
-        '<p class="label" id="consent-title">FIG.00 — COOKIES</p>' +
-        '<p class="consent-text">This site runs on coffee and one analytics cookie. Say yes and Google Analytics tells me which posts actually get read. Say no and nothing loads, no hard feelings.</p>';
+        '<p class="label" id="consent-title">FIG.00 · COOKIES</p>' +
+        '<p class="consent-text">This site sets one cookie, for Google Analytics, so I can see which posts get read. Decline and nothing loads. My ego will survive.</p>';
       var actions = document.createElement('p');
       actions.className = 'consent-actions';
       actions.appendChild(button('Accept', 'accepted', true));
