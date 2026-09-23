@@ -1,4 +1,4 @@
-/* Google Analytics behind explicit consent. Nothing is loaded and no cookie is set until "Akceptuję". */
+/* Google Analytics behind explicit consent. Nothing is loaded and no cookie is set until "Accept". */
 (function () {
   var GA_ID = 'G-G78N7W8FN6';
   var KEY = 'cookie-consent';
@@ -80,12 +80,12 @@
       banner.className = 'consent';
       banner.setAttribute('aria-labelledby', 'consent-title');
       banner.innerHTML =
-        '<p class="label" id="consent-title">Cookies — analityka</p>' +
-        '<p class="consent-text">Chcę wiedzieć, które teksty są czytane. Za Twoją zgodą strona użyje Google Analytics, które zapisuje pliki cookies. Bez zgody nic nie jest ładowane.</p>';
+        '<p class="label" id="consent-title">FIG.00 — COOKIES</p>' +
+        '<p class="consent-text">This site runs on coffee and one analytics cookie. Say yes and Google Analytics tells me which posts actually get read. Say no and nothing loads, no hard feelings.</p>';
       var actions = document.createElement('p');
       actions.className = 'consent-actions';
-      actions.appendChild(button('Akceptuję', 'accepted', true));
-      actions.appendChild(button('Odrzucam', 'rejected', false));
+      actions.appendChild(button('Accept', 'accepted', true));
+      actions.appendChild(button('Decline', 'rejected', false));
       banner.appendChild(actions);
       banner.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && readChoice()) closeBanner();
