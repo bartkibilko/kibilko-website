@@ -90,3 +90,7 @@ Values in "Before" are the round 2 result.
 PHP stays only as a topic: the blog descriptions, the blog lede, the home empty state, `knowsAbout` in JSON-LD and the `LISTING 01 · PHP` caption in the post template.
 
 Logo: the K mark is replaced by a BK monogram. Variant A (used on the site, as `favicon.svg`, `favicon.ico`, `apple-touch-icon.png` and in the header) is BK in a square frame with two steam wisps above the letters. B and K are drawn as one continuous stroke each, so the joints are closed. Variant B (`screenshots/logo-bk-b.png`) is BK alone with Blueprint corner marks and no coffee. The company name is not added to any text. The previous K variants stay in `screenshots/logo-a.png` and `logo-b.png`.
+
+## Round 4: logo reverted to the plain K
+
+The owner rejected the coffee K and both BK variants. The site, `favicon.svg`, `favicon.ico` and `apple-touch-icon.png` are back to the round 1 mark, an accent square with a letter K, byte for byte as in the base commit. `.brand-mark` in `css/site.css` and the `<span class="brand-mark">K</span>` in the header are restored the same way. This is a placeholder until a proper logo is made in a separate task. All `screenshots/logo-*` files are deleted; `screenshots/header-k.png` shows the header now. Copy from rounds 1 to 3 is unchanged, including the coffee lines and "AI-native software architect".

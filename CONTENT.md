@@ -12,7 +12,7 @@ All visible copy and meta text, in display order. Source of truth is the HTML/JS
 
 **Skip link and header**
 - Skip to content
-- Brand: [BK logo] Bartosz Kibiłko
+- Brand: [K mark, accent square with a letter K] Bartosz Kibiłko
 - Nav: Blog, About, Contact
 
 **SEC.01 · PROFILE (hero)**
