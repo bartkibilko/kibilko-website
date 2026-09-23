@@ -57,3 +57,20 @@ The "three pillars" were not three distinct points (one duplicated SEC.02), so t
 |---|---|---|---|
 | label | FIG.00 — COOKIES | FIG.00 · COOKIES | 13 |
 | text | This site runs on coffee and one analytics cookie. Say yes and Google Analytics tells me which posts actually get read. Say no and nothing loads, no hard feelings. | This site sets one cookie, for Google Analytics, so I can see which posts get read. Decline and nothing loads. My ego will survive. | 30, 27 |
+
+## Round 2: owner feedback (coffee, logo, design and frontend)
+
+Values in "Before" are the round 1 result.
+
+| Where | Before | After | Rules |
+|---|---|---|---|
+| hero lede | AI-native PHP architect. I build backends with coding agents. | AI-native PHP architect. I design and build backends and frontends with coding agents. | 27 |
+| hero sub | ...I work freelance B2B, remotely. | ...I work freelance B2B, remotely, with a coffee on the desk. | 27 (a scene, not an aphorism) |
+| meta description, og:description | AI-native PHP architect building backends with coding agents since 2026. Blog on working with AI agents and on PHP. Freelance B2B, remote. | AI-native PHP architect. Backends, frontends and the design around them, built with coding agents since 2026. Blog on AI agents and PHP. Freelance B2B, remote. | 27 |
+| SEC.02 bullet 1 | I design backends and ways of working where coding agents are the default way to ship software. | I design and build backends, frontends and the design around them, with coding agents as the default way to ship. | 27 (the owner's wording; three real things, so rule 10 does not apply) |
+| home empty state | Notes on working with AI agents and on PHP. | Notes on working with AI agents and on PHP, written over coffee. | 27 |
+| blog empty state | ...The first post goes up when it is ready. | ...The first post goes up when it is ready. The coffee is already made. | 27 |
+| footer fine print (all pages) | ...Po polsku na życzenie. | ...Po polsku na życzenie. Built over coffee. | 27 |
+| cookie banner | ...Decline and nothing loads. My ego will survive. | ...Decline and nothing loads. Either way, the coffee is on the house. | 27 |
+
+Logo: the accent square with a letter K is replaced by an SVG mark, a K in the accent colour on a paper tile with a Blueprint frame and two steam wisps above the upper arm. It is used in the header (`img.brand-mark`) and as `favicon.svg`, `favicon.ico` and `apple-touch-icon.png`. `.brand-mark` in `css/site.css` lost its background and letter styles. The mark switches to the dark palette through `prefers-color-scheme`. Variant B (a coffee bean with a paper-coloured K) is only in `screenshots/logo-b.png`.
