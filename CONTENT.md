@@ -5,19 +5,19 @@ All visible copy and meta text, in display order. Source of truth is the HTML/JS
 ## Homepage (`/`)
 
 **Meta**
-- Title: Bartosz Kibiłko, AI-native PHP architect
-- Description and og:description: AI-native PHP architect. Backends, frontends and the design around them, built with coding agents since 2026. Blog on AI agents and PHP. Freelance B2B, remote.
-- og:title: Bartosz Kibiłko, AI-native PHP architect
-- JSON-LD: jobTitle "AI-native PHP architect"; knowsAbout PHP, Backend architecture, AI agents, AI-assisted software development
+- Title: Bartosz Kibiłko, AI-native software architect
+- Description and og:description: AI-native software architect. Backends, frontends and the design around them, built with coding agents since 2026. Blog on AI agents and PHP. Freelance B2B, remote.
+- og:title: Bartosz Kibiłko, AI-native software architect
+- JSON-LD: jobTitle "AI-native software architect"; knowsAbout PHP, Backend architecture, AI agents, AI-assisted software development
 
 **Skip link and header**
 - Skip to content
-- Brand: [logo] Bartosz Kibiłko
+- Brand: [BK logo] Bartosz Kibiłko
 - Nav: Blog, About, Contact
 
 **SEC.01 · PROFILE (hero)**
 - Heading: Bartosz Kibiłko
-- Lede: AI-native PHP architect. I design and build backends and frontends with coding agents.
+- Lede: AI-native software architect. I design and build backends and frontends with coding agents.
 - Sub: I write about what the job looks like once code is cheap to produce. The posts are short, take a side and include numbers. I work freelance B2B, remotely, with a coffee on the desk.
 - Buttons: Read the blog, Get in touch
 
@@ -50,7 +50,7 @@ All visible copy and meta text, in display order. Source of truth is the HTML/JS
 ## Blog index (`/blog/`)
 
 **Meta**
-- Title and og:title: Blog | Bartosz Kibiłko, AI-native PHP architect
+- Title and og:title: Blog | Bartosz Kibiłko, AI-native software architect
 - Description and og:description: Notes on working with AI agents and on PHP, and on what the job becomes once code is cheap. Short posts that take a side and show numbers.
 
 **Page**

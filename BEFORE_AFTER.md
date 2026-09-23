@@ -74,3 +74,19 @@ Values in "Before" are the round 1 result.
 | cookie banner | ...Decline and nothing loads. My ego will survive. | ...Decline and nothing loads. Either way, the coffee is on the house. | 27 |
 
 Logo: the accent square with a letter K is replaced by an SVG mark, a K in the accent colour on a paper tile with a Blueprint frame and two steam wisps above the upper arm. It is used in the header (`img.brand-mark`) and as `favicon.svg`, `favicon.ico` and `apple-touch-icon.png`. `.brand-mark` in `css/site.css` lost its background and letter styles. The mark switches to the dark palette through `prefers-color-scheme`. Variant B (a coffee bean with a paper-coloured K) is only in `screenshots/logo-b.png`.
+
+## Round 3: no PHP in the title, BK monogram
+
+Values in "Before" are the round 2 result.
+
+| Where | Before | After | Rules |
+|---|---|---|---|
+| home title, og:title | Bartosz Kibiłko, AI-native PHP architect | Bartosz Kibiłko, AI-native software architect | 27 |
+| home meta description, og:description | AI-native PHP architect. Backends, frontends... | AI-native software architect. Backends, frontends... | 27 |
+| JSON-LD jobTitle | AI-native PHP architect | AI-native software architect | 27 |
+| hero lede | AI-native PHP architect. I design and build backends and frontends with coding agents. | AI-native software architect. I design and build backends and frontends with coding agents. | 27 |
+| blog title, og:title | Blog \| Bartosz Kibiłko, AI-native PHP architect | Blog \| Bartosz Kibiłko, AI-native software architect | 27 |
+
+PHP stays only as a topic: the blog descriptions, the blog lede, the home empty state, `knowsAbout` in JSON-LD and the `LISTING 01 · PHP` caption in the post template.
+
+Logo: the K mark is replaced by a BK monogram. Variant A (used on the site, as `favicon.svg`, `favicon.ico`, `apple-touch-icon.png` and in the header) is BK in a square frame with two steam wisps above the letters. B and K are drawn as one continuous stroke each, so the joints are closed. Variant B (`screenshots/logo-bk-b.png`) is BK alone with Blueprint corner marks and no coffee. The company name is not added to any text. The previous K variants stay in `screenshots/logo-a.png` and `logo-b.png`.
