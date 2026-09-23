@@ -22,3 +22,6 @@ Desktop.ini
 
 # Don't ignore these!
 !img/.gitkeep
+
+# Local screenshots for visual review
+/screenshots/
