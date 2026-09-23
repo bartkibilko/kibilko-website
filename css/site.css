@@ -111,3 +111,13 @@ a:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
 @media (max-width:420px){.hero{padding:var(--sp-6) var(--sp-4)}.contact{gap:var(--sp-4)}}
 .post code{font-family:var(--font-mono);font-size:.88em}
 .post time{display:inline}
+button.btn{background:none;cursor:pointer;line-height:inherit}
+button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.linklike{font:inherit;letter-spacing:inherit;color:var(--accent-text);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.fine .linklike{margin-left:var(--sp-2)}
+.consent{position:sticky;bottom:var(--sp-4);z-index:20;max-width:44em;margin:0 auto var(--sp-4);background:var(--paper);color:var(--ink);border:1.5px solid var(--ink);box-shadow:6px 6px 0 var(--frame-shadow);padding:var(--sp-4) var(--sp-6);max-height:calc(100vh - var(--sp-8));overflow-y:auto}
+.consent-text{font-family:var(--font-ui);font-size:15.5px;line-height:1.5;margin:0 0 var(--sp-4)}
+.consent-actions{display:flex;flex-wrap:wrap;gap:var(--sp-3);margin:0}
+.consent-actions .btn{margin:0}
+@media (max-width:420px){.consent{margin:0 var(--sp-2) var(--sp-2);bottom:var(--sp-2);padding:var(--sp-4)}.consent-actions .btn{flex:1 1 auto}}
+@media print{.consent{display:none}}
