@@ -8,4 +8,8 @@
     <loc>https://www.kibilko.pl/blog/</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.kibilko.pl/blog/the-work-moved-to-the-edges/</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>

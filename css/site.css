@@ -121,3 +121,10 @@ button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .consent-actions .btn{margin:0}
 @media (max-width:420px){.consent{margin:0 var(--sp-2) var(--sp-2);bottom:var(--sp-2);padding:var(--sp-4)}.consent-actions .btn{flex:1 1 auto}}
 @media print{.consent{display:none}}
+
+/* post figure and sources */
+figure.fig{margin:var(--sp-8) 0}
+figure.fig .fig-svg{display:block;width:100%;height:auto;border:1px solid var(--ink)}
+figure.fig figcaption{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;line-height:1.6;text-transform:uppercase;color:var(--muted);margin-top:var(--sp-3)}
+.sources ul{margin:0;padding-left:1.2em}
+.sources li{margin-bottom:var(--sp-2)}
