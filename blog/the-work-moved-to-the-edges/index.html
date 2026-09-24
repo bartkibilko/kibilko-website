@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The work moved to the edges | Bartosz Kibiłko</title>
+<meta name="description" content="Over the last year, the middle of a programmer&#x27;s day disappeared. What is left is planning at one end and verification at the other, and the industry has not yet worked out who will be good at either in ten years.">
+<link rel="canonical" href="https://www.kibilko.pl/blog/the-work-moved-to-the-edges/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Bartosz Kibiłko">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="The work moved to the edges">
+<meta property="og:description" content="Over the last year, the middle of a programmer&#x27;s day disappeared. What is left is planning at one end and verification at the other, and the industry has not yet worked out who will be good at either in ten years.">
+<meta property="og:url" content="https://www.kibilko.pl/blog/the-work-moved-to-the-edges/">
+<meta property="og:image" content="https://www.kibilko.pl/blog/the-work-moved-to-the-edges/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The work moved to the edges: FIG.01, The human owns the edges">
+<meta property="article:published_time" content="2026-09-24">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The work moved to the edges">
+<meta name="twitter:description" content="Over the last year, the middle of a programmer&#x27;s day disappeared. What is left is planning at one end and verification at the other, and the industry has not yet worked out who will be good at either in ten years.">
+<meta name="twitter:image" content="https://www.kibilko.pl/blog/the-work-moved-to-the-edges/og.png">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="preload" href="../../fonts/playfairdisplay/PlayfairDisplay-VF.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/site.css">
+<script src="../../js/consent.js" defer></script>
+</head>
+<body class="dir-blueprint">
+<a class="skip" href="#main">Skip to content</a>
+<div class="page">
+<header class="site-head">
+  <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">K</span>Bartosz Kibiłko</a>
+  <nav aria-label="Main"><a href="/blog/" aria-current="page">Blog</a><a href="/#about">About</a><a href="#contact">Contact</a></nav>
+</header>
+
+<main id="main">
+<article class="post">
+  <header class="post-head">
+    <p class="label">NOTES · #01</p>
+    <h1>The work moved to the edges</h1>
+    <p class="dek">Over the last year, the middle of a programmer's day disappeared. What is left is planning at one end and verification at the other, and the industry has not yet worked out who will be good at either in ten years.</p>
+    <p class="meta"><span>Bartosz Kibiłko</span><time datetime="2026-09-24">24 September 2026</time><span>7 min read</span></p>
+  </header>
+
+<p>For most of my working life a day had a thick middle. There was some thinking in the morning and some checking in the evening, and in between, hours of typing. The typing was the job. Clients were billed for it, and juniors were hired to learn it.</p>
+<p>That middle is gone now. Since the start of 2026, coding agents have been writing the code I deliver. The hours did not disappear with it. They moved to the two ends of the day: deciding what should be built, and checking that what came back is right.</p>
+<p>I would like to say this was a clever choice. It was not much of a choice at all. The industry changed the price of code in about a year, and anyone who sells software work had to change with it. Clients saw what the tools could do. Deadlines shortened, and so did the patience for estimates built on hours of typing. Staying with the old way of working would have meant charging for something that had stopped being scarce.</p>
+<h2>Clients never bought code</h2>
+<p>Chris Gregori put the change in one line: "Code is cheap now. Software isn't." The cost of producing code fell close to zero. The cost of building something that works for years inside a real business did not move.</p>
+<p>This is easy to forget from inside the job. For a long time developers described themselves by their tools, and job ads listed languages and frameworks as if the client cared which ones. The client never cared. A shop owner wants orders to go through on a busy Friday. A publisher wants the site up when the story breaks. What they pay for is a working solution and someone who answers for it. The stack was always our business, not theirs.</p>
+<p>Kent Beck saw the shape of this early. In 2023, he wrote that when a technology makes something cheap, most of the old skills lose their value and the few that remain become worth far more. Three years later that reads less like a forecast and more like a description of my week.</p>
+<h2>What the work looks like now</h2>
+<p>The best picture of this that I have seen comes from Kun Chen, in <a href="https://www.youtube.com/watch?v=iQyg-KypKAA&amp;t=1992s">a video about his agentic engineering workflow</a>. He draws one line from plan to implement to validate. Planning has two people and one agent. Implementation has three agents. Validation has two agents and one person. In the middle, he wrote, "continuous chunk of agent execution time for me to spin up more tasks." Agents already help with planning and with checking, but a person is present at the start and at the end. The long stretch of agent work in the middle is the time the developer uses to start the next tasks. My own version looks like this.</p>
+<figure class="fig"><svg class="fig-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" role="img" aria-labelledby="fig01-title fig01-desc">
+  <title id="fig01-title">FIG.01 · Plan, implement, validate, 2026</title>
+  <desc id="fig01-desc">Three stages on one line. At Plan, two humans decide what to build and one agent helps. At Implement, agents work on two or three tasks in parallel, started one after another. At Validate, two agents test and review first and one human decides what ships. A bracket under Implement marks agent execution time as the time the human uses to start more tasks. Rejected work goes back to planning. Humans are drawn as solid filled circles, agents as dashed outline circles.</desc>
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#ebecee" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#17181c"/>
+    </marker>
+    <marker id="arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#e8472b"/>
+    </marker>
+    <style>
+      .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em}
+      .serif{font-family:"Playfair Display",Georgia,serif}
+      .body{font-family:"Source Serif 4",Georgia,serif}
+      .human{fill:#e8472b;stroke:#17181c;stroke-width:1.5}
+      .agent{fill:#f3f4f6;stroke:#17181c;stroke-width:2;stroke-dasharray:5 4}
+    </style>
+  </defs>
+
+  <!-- paper, grid and corner marks -->
+  <rect width="1000" height="660" fill="#f3f4f6"/>
+  <rect width="1000" height="660" fill="url(#grid)"/>
+  <g stroke="#17181c" stroke-width="2" fill="none">
+    <path d="M14 40V14H40"/>
+    <path d="M960 14H986V40"/>
+    <path d="M14 620V646H40"/>
+    <path d="M960 646H986V620"/>
+  </g>
+
+  <!-- header -->
+  <text x="40" y="52" class="mono" font-size="16" fill="#6b7a90">FIG.01 · PLAN, IMPLEMENT, VALIDATE</text>
+  <text x="960" y="52" class="mono" font-size="16" fill="#6b7a90" text-anchor="end">KIBILKO.PL</text>
+  <text x="40" y="100" class="serif" font-size="38" font-weight="700" fill="#17181c">The human owns the <tspan font-style="italic" fill="#c8381e">edges</tspan></text>
+  <line x1="40" y1="122" x2="960" y2="122" stroke="#17181c" stroke-width="1.5"/>
+
+  <!-- legend -->
+  <text x="40" y="157" class="mono" font-size="14" fill="#6b7a90">LEGEND</text>
+  <circle cx="132" cy="152" r="10" class="human"/>
+  <text x="150" y="157" class="mono" font-size="14" font-weight="600" fill="#17181c">HUMAN</text>
+  <circle cx="232" cy="152" r="10" class="agent"/>
+  <text x="250" y="157" class="mono" font-size="14" font-weight="600" fill="#17181c">AGENT</text>
+
+  <!-- stage titles on one line -->
+  <g class="mono" font-size="14" fill="#c8381e" text-anchor="middle">
+    <text x="170" y="200">STEP 01</text>
+    <text x="500" y="200">STEP 02</text>
+    <text x="830" y="200">STEP 03</text>
+  </g>
+  <g class="serif" font-size="32" font-weight="700" fill="#17181c" text-anchor="middle">
+    <text x="170" y="238">Plan</text>
+    <text x="500" y="238">Implement</text>
+    <text x="830" y="238">Validate</text>
+  </g>
+  <g stroke="#17181c" stroke-width="1.8" fill="none" marker-end="url(#arrow)">
+    <path d="M216 227H396"/>
+    <path d="M606 227H752"/>
+  </g>
+
+  <!-- 01 plan: two humans, one agent helping -->
+  <circle cx="110" cy="312" r="22" class="human"/>
+  <circle cx="170" cy="312" r="22" class="human"/>
+  <circle cx="230" cy="312" r="22" class="agent"/>
+  <g class="body" font-size="18" fill="#17181c" text-anchor="middle">
+    <text x="170" y="386">People decide what to build,</text>
+    <text x="170" y="410">an agent helps with the plan</text>
+  </g>
+
+  <!-- 02 implement: two or three tasks, started one after another -->
+  <g>
+    <circle cx="384" cy="272" r="14" class="agent"/>
+    <text x="406" y="277" class="mono" font-size="13" fill="#6b7a90">TASK 1</text>
+    <path d="M470 272H632" stroke="#17181c" stroke-width="3" stroke-dasharray="10 6"/>
+  </g>
+  <g>
+    <circle cx="424" cy="312" r="14" class="agent"/>
+    <text x="446" y="317" class="mono" font-size="13" fill="#6b7a90">TASK 2</text>
+    <path d="M510 312H632" stroke="#17181c" stroke-width="3" stroke-dasharray="10 6"/>
+  </g>
+  <g>
+    <circle cx="464" cy="352" r="14" class="agent"/>
+    <text x="486" y="357" class="mono" font-size="13" fill="#6b7a90">TASK 3</text>
+    <path d="M550 352H632" stroke="#17181c" stroke-width="3" stroke-dasharray="10 6"/>
+  </g>
+
+  <!-- plan fans out to tasks, tasks converge on validation -->
+  <g stroke="#17181c" stroke-width="1.6" fill="none" marker-end="url(#arrow)">
+    <path d="M254 312C300 312 320 272 366 272"/>
+    <path d="M254 312C320 312 360 312 406 312"/>
+    <path d="M254 312C330 312 400 352 446 352"/>
+    <path d="M632 272C690 272 700 312 744 312"/>
+    <path d="M632 312H744"/>
+    <path d="M632 352C690 352 700 312 744 312"/>
+  </g>
+
+  <!-- 03 validate: two agents first, a human decides -->
+  <circle cx="770" cy="312" r="22" class="agent"/>
+  <circle cx="830" cy="312" r="22" class="agent"/>
+  <circle cx="890" cy="312" r="22" class="human"/>
+  <g class="body" font-size="18" fill="#17181c" text-anchor="middle">
+    <text x="830" y="386">Agents test and review first,</text>
+    <text x="830" y="410">a person decides what ships</text>
+  </g>
+
+  <!-- bracket under implement: agent execution time -->
+  <path d="M372 430V444H628V430M500 444V456" fill="none" stroke="#c8381e" stroke-width="2"/>
+  <text x="500" y="482" class="mono" font-size="14" font-weight="600" fill="#c8381e" text-anchor="middle">AGENT EXECUTION TIME</text>
+  <line x1="390" y1="494" x2="610" y2="494" stroke="#c8381e" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="500" y="518" class="body" font-size="18" fill="#17181c" text-anchor="middle">is when I start the next task</text>
+
+  <!-- rejected work goes back to the plan -->
+  <path d="M912 312H948V568H170V428" fill="none" stroke="#e8472b" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow-accent)"/>
+  <rect x="330" y="556" width="340" height="26" fill="#f3f4f6"/>
+  <text x="500" y="574" class="mono" font-size="15" font-weight="600" fill="#c8381e" text-anchor="middle">REJECTED · BACK TO THE PLAN</text>
+
+  <!-- footer -->
+  <text x="500" y="620" class="mono" font-size="14" fill="#6b7a90" text-anchor="middle">A PERSON AT BOTH ENDS · AGENTS HELP AT EVERY STAGE</text>
+</svg>
+<figcaption>FIG.01 · After Kun Chen. A person at both ends, agents at every stage. While agents implement, the next task gets started. Anything that fails review goes back to the plan, not into production.</figcaption></figure>
+<p><strong>Planning</strong> is where most of the day goes now. Agents help here too, reading the code and drafting the plan, but the decisions stay with people. A feature has to be cut into pieces that do not touch each other, so that several agents can work on them at the same time without tripping over one another. Each piece needs a clear description of what done means, which files it may change, and which it must leave alone. Peter Steinberger judges agent work by its "blast radius", meaning how much of the system one change touches. The plan is where the blast radius is decided. A vague task comes back as a large diff, and a large diff costs more to review than it saved to write.</p>
+<p><strong>Implementation</strong> belongs to the agents. Two or three of them run in parallel on separate pieces, and while they work, I plan the next task. They write tests along with the code, and they are very good at making those tests pass. That matters more than it sounds.</p>
+<p><strong>Verification</strong> is the other half of the job. Agents do the first pass, running the tests and reviewing each other's work, but the final decision cannot be delegated. Every run ends with a diff, and every diff has to be read by someone who knows what the business needs. If a change is merged unread, the agent made the decision and a person only signed it.</p>
+<h2>Answering from lunch</h2>
+<p>A lot of that work happens away from the desk. The agents keep going when I am not at the laptop, and Claude Code's remote control lets me reach the running sessions from my phone.</p>
+<p>On an ordinary day I go out for lunch while two or three agents are still working. Somewhere between ordering and paying, one of them stops with a question about a detail the plan left open. I answer in a sentence from the phone, and the session carries on. When I am back at the desk, the work has moved forward instead of waiting an hour for me.</p>
+<p>The questions are short, but answering them well takes knowing how the system should behave, and I know that because I built systems like it by hand for years. The author of ordep.dev wrote that "the biggest cost of code is understanding it, not writing it." Agents took away the writing. The understanding is still ours to pay for, and it has to be paid every time.</p>
+<h2>This is not vibe coding</h2>
+<p>Simon Willison has been careful about one word. Vibe coding, in his definition, means building software while ignoring the code. What the diagram shows is the opposite: every result is read and tested by a person who answers for it before it reaches a client. The difference will matter more each year, because the industry will blame "AI code" for failures that are really failures to review.</p>
+<h2>The part that should worry us</h2>
+<p>The loop works for people who already know what a bad diff looks like. That knowledge came from somewhere, and the industry has just removed the place it came from.</p>
+<p>Lars Faye calls it the supervision paradox. The skills you need to supervise agents are the skills that agents stop you from practising. Someone who has spent years writing slow queries and debugging queues at night can live off that for a long time. Someone starting now will be asked to verify work they have never done.</p>
+<p>I started in 2012 as a junior developer on a busy regional news portal. I got the small tasks nobody senior wanted, and seniors reviewed my code and told me why it was bad. Nobody called that training, and nobody budgeted for it. It happened because the small tasks needed doing and a junior was cheaper than a senior. Agents now do those tasks in minutes, and the training that came along with them goes too. Steve Yegge wrote about the death of the junior developer in 2024. He was forecasting. Today it looks more like a hiring decision that companies make without noticing, by never opening the position.</p>
+<p>Teams change more peacefully. In teams of six to eight people, the pull request was also how the team learned the system: I read your code, you read mine, and after a year we both knew how the whole thing worked. When one person with agents ships what a team used to, nobody else reads the code. The code can be fine, and the shared understanding still does not form. Sean Goedecke argues that nobody ever fully understood a large codebase anyway, and he is partly right. But in the old systems, a few people understood large parts because they had built them. We are heading towards systems where nobody built any part.</p>
+<p>And there is the craft. Nolan Lawson wrote "We Mourn Our Craft", and many developers recognised themselves in it. I understand the grief without quite sharing it. I do not miss the typing. What I miss is being slow enough to know every line that shipped, which is a smaller loss and harder to defend in front of a client. Annie Vella describes the shift as moving from builder to orchestrator, and she suggests it can be a pendulum rather than a one-way door. I would like her to be right.</p>
+<h2>Where this leaves us</h2>
+<p>Nobody asked developers whether they wanted this. The price of code dropped, clients noticed, and the work rearranged itself around the two things that stayed expensive: knowing what to build, and knowing whether it was built right. Adapting was the only reasonable answer, and the loop in the figure is what that adaptation looks like from the inside.</p>
+<p>The tools work. I use them every day and would not go back. But the industry built its seniors out of years of cheap, boring, hand-written work, and it has just made that work unnecessary. The planning and the verification at the edges of the diagram depend on judgment, and so far nobody has said where the next generation will get it.</p>
+
+  <aside class="footnotes sources"><p class="label">SOURCES</p><ul>
+<li>Chris Gregori, <a href="https://www.chrisgregori.dev/opinion/code-is-cheap-now-software-isnt">Code Is Cheap Now. Software Isn't.</a>, 2026-01-10</li>
+<li>Kent Beck, <a href="https://newsletter.kentbeck.com/p/90-of-my-skills-are-now-worth-0">90% of My Skills Are Now Worth $0</a>, 2023-04-19</li>
+<li>Kun Chen, <a href="https://www.youtube.com/watch?v=iQyg-KypKAA&amp;t=1992s">L8 Principal's Agentic Engineering Workflow</a>, video, 2026-06-20 (the diagram is at 33:12)</li>
+<li>Peter Steinberger, <a href="https://steipete.me/posts/just-talk-to-it">Just Talk To It: the no-bs Way of Agentic Engineering</a>, 2025-10-14</li>
+<li>ordep, <a href="https://ordep.dev/posts/writing-code-was-never-the-bottleneck">Writing Code Was Never The Bottleneck</a>, 2025-06-30</li>
+<li>Simon Willison, <a href="https://simonwillison.net/2025/May/1/not-vibe-coding/">Two publishers and three authors fail to understand what "vibe coding" means</a>, 2025-05-01</li>
+<li>Lars Faye, <a href="https://larsfaye.com/articles/agentic-coding-is-a-trap">Agentic Coding is a Trap</a>, April 2026</li>
+<li>Steve Yegge, <a href="https://sourcegraph.com/blog/the-death-of-the-junior-developer">The Death of the Junior Developer</a>, 2024-06-24</li>
+<li>Sean Goedecke, <a href="https://www.seangoedecke.com/in-defense-of-not-understanding-your-codebase/">In defense of not understanding your codebase</a>, 2026-07-11</li>
+<li>Nolan Lawson, <a href="https://nolanlawson.com/2026/02/07/we-mourn-our-craft/">We Mourn Our Craft</a>, 2026-02-07</li>
+<li>Annie Vella, <a href="https://annievella.com/posts/the-software-engineering-identity-crisis/">The Software Engineering Identity Crisis</a>, 2025-03-21</li>
+</ul></aside>
+</article>
+</main>
+<footer class="site-foot" id="contact">
+  <p class="label">SEC.05 · CONTACT</p>
+  <h2>Email or LinkedIn</h2>
+  <ul class="contact"><li><span class="k">E-mail</span><a href="mailto:bartosz@kibilko.pl">bartosz@kibilko.pl</a></li><li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/bartkibilko/" rel="me noopener">linkedin.com/in/bartkibilko</a></li></ul>
+  <p class="fine">© 2026 Bartosz Kibiłko. Po polsku na życzenie. Built over coffee.<button type="button" class="linklike" data-consent-open hidden>Cookie settings</button></p>
+</footer>
+</div>
+</body>
+</html>
