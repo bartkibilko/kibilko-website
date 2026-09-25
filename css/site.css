@@ -184,3 +184,15 @@ kbd{font-family:var(--font-mono);font-size:10.5px;border:1px solid var(--rule);b
 @media (max-width:1099px){.read{grid-template-columns:minmax(0,var(--measure));gap:0}.read>.toc{display:none}.toc-btn{display:inline-flex;flex:none}.strip-in{padding:0 var(--sp-4)}}
 @media (max-width:560px){.strip-title .post-t{display:none}.post-end{grid-template-columns:1fr}.post-end a+a{border-left:0;border-top:1px solid var(--ink);text-align:left}.hlink{display:none}}
 @media print{.toc,.strip,.sheet,.toast,.post-end{display:none!important}.read{display:block}}
+
+/* home page: the same contents rail, built from the sections marked data-sec */
+[data-sec],.post [id]{scroll-margin-top:calc(var(--strip-h) + var(--sp-8))}
+.read-home{grid-template-columns:208px minmax(0,1fr);gap:var(--sp-12);justify-content:stretch}
+.read-home>.toc{top:calc(var(--strip-h) + var(--sp-6))}
+@media (max-width:1099px){.read-home{grid-template-columns:minmax(0,1fr)}}
+
+/* FIG.01: a stage selected in the figure highlights its paragraph */
+.post p:target{animation:stage-flash 2.4s ease-out}
+@keyframes stage-flash{0%,35%{background:color-mix(in srgb,var(--accent) 16%,transparent);box-shadow:-12px 0 0 color-mix(in srgb,var(--accent) 16%,transparent),12px 0 0 color-mix(in srgb,var(--accent) 16%,transparent)}100%{background:transparent;box-shadow:none}}
+@media (prefers-reduced-motion:reduce){.post p:target{animation:none;outline:2px solid var(--accent);outline-offset:6px}}
+.subscribe{margin:calc(-1 * var(--sp-8)) 0 var(--sp-12)}
