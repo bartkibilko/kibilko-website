@@ -26,17 +26,18 @@
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="preload" href="../../fonts/playfairdisplay/PlayfairDisplay-VF.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../../css/tokens.css?v=20260925">
-<link rel="stylesheet" href="../../css/site.css?v=20260925">
-<script src="../../js/consent.js?v=20260925" defer></script>
-<script src="../../js/nav.js?v=20260925" defer></script>
+<link rel="alternate" type="application/rss+xml" title="Bartosz Kibiłko · Blog" href="/feed.xml">
+<link rel="stylesheet" href="../../css/tokens.css?v=20260925-2">
+<link rel="stylesheet" href="../../css/site.css?v=20260925-2">
+<script src="../../js/consent.js?v=20260925-2" defer></script>
+<script src="../../js/nav.js?v=20260925-2" defer></script>
 </head>
 <body class="dir-blueprint">
 <a class="skip" href="#main">Skip to content</a>
 <div class="page">
 <header class="site-head">
   <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">K</span>Bartosz Kibiłko</a>
-  <nav aria-label="Main"><a href="/blog/" aria-current="page">Blog</a><a href="/#about">About</a><a href="#contact">Contact</a></nav>
+  <nav aria-label="Main"><a href="/blog/" aria-current="page">Blog</a><a href="/#about">About</a><a href="#contact">Contact</a><a href="/feed.xml">RSS</a></nav>
 </header>
 
 <main id="main" class="read">
@@ -77,6 +78,9 @@
       .body{font-family:"Source Serif 4",Georgia,serif}
       .human{fill:#e8472b;stroke:#17181c;stroke-width:1.5}
       .agent{fill:#f3f4f6;stroke:#17181c;stroke-width:2;stroke-dasharray:5 4}
+      .hit{fill:#e8472b;fill-opacity:0;stroke:#e8472b;stroke-opacity:0;stroke-width:2;stroke-dasharray:7 5;cursor:pointer}
+      a:hover .hit,a:focus-visible .hit{fill-opacity:.06;stroke-opacity:1}
+      a:focus{outline:none}
     </style>
   </defs>
 
@@ -177,11 +181,15 @@
 
   <!-- footer -->
   <text x="500" y="620" class="mono" font-size="14" fill="#6b7a90" text-anchor="middle">A PERSON AT BOTH ENDS · AGENTS HELP AT EVERY STAGE</text>
+  <!-- each stage links to the paragraph that describes it -->
+  <a href="#stage-plan" aria-label="Plan: read the paragraph about planning"><title>Plan: jump to the paragraph</title><rect class="hit" x="62" y="180" width="216" height="244"/></a>
+  <a href="#stage-implement" aria-label="Implement: read the paragraph about implementation"><title>Implement: jump to the paragraph</title><rect class="hit" x="362" y="180" width="276" height="244"/></a>
+  <a href="#stage-validate" aria-label="Validate: read the paragraph about verification"><title>Validate: jump to the paragraph</title><rect class="hit" x="722" y="180" width="216" height="244"/></a>
 </svg>
-<figcaption>FIG.01 · After Kun Chen. A person at both ends, agents at every stage. While agents implement, the next task gets started. Anything that fails review goes back to the plan, not into production.</figcaption></figure>
-<p><strong>Planning</strong> is where most of the day goes now. Agents help here too, reading the code and drafting the plan, but the decisions stay with people. A feature has to be cut into pieces that do not touch each other, so that several agents can work on them at the same time without tripping over one another. Each piece needs a clear description of what done means, which files it may change, and which it must leave alone. Peter Steinberger judges agent work by its "blast radius", meaning how much of the system one change touches. The plan is where the blast radius is decided. A vague task comes back as a large diff, and a large diff costs more to review than it saved to write.</p>
-<p><strong>Implementation</strong> belongs to the agents. Two or three of them run in parallel on separate pieces, and while they work, I plan the next task. They write tests along with the code, and they are very good at making those tests pass. That matters more than it sounds.</p>
-<p><strong>Verification</strong> is the other half of the job. Agents do the first pass, running the tests and reviewing each other's work, but the final decision cannot be delegated. Every run ends with a diff, and every diff has to be read by someone who knows what the business needs. If a change is merged unread, the agent made the decision and a person only signed it.</p>
+<figcaption>FIG.01 · After Kun Chen. A person at both ends, agents at every stage. While agents implement, the next task gets started. Anything that fails review goes back to the plan, not into production. Select a stage to read about it.</figcaption></figure>
+<p id="stage-plan"><strong>Planning</strong> is where most of the day goes now. Agents help here too, reading the code and drafting the plan, but the decisions stay with people. A feature has to be cut into pieces that do not touch each other, so that several agents can work on them at the same time without tripping over one another. Each piece needs a clear description of what done means, which files it may change, and which it must leave alone. Peter Steinberger judges agent work by its "blast radius", meaning how much of the system one change touches. The plan is where the blast radius is decided. A vague task comes back as a large diff, and a large diff costs more to review than it saved to write.</p>
+<p id="stage-implement"><strong>Implementation</strong> belongs to the agents. Two or three of them run in parallel on separate pieces, and while they work, I plan the next task. They write tests along with the code, and they are very good at making those tests pass. That matters more than it sounds.</p>
+<p id="stage-validate"><strong>Verification</strong> is the other half of the job. Agents do the first pass, running the tests and reviewing each other's work, but the final decision cannot be delegated. Every run ends with a diff, and every diff has to be read by someone who knows what the business needs. If a change is merged unread, the agent made the decision and a person only signed it.</p>
 <h2 id="answering-from-lunch">Answering from lunch</h2>
 <p>A lot of that work happens away from the desk. The agents keep going when I am not at the laptop, and Claude Code's remote control lets me reach the running sessions from my phone.</p>
 <p>On an ordinary day I go out for lunch while two or three agents are still working. Somewhere between ordering and paying, one of them stops with a question about a detail the plan left open. I answer in a sentence from the phone, and the session carries on. When I am back at the desk, the work has moved forward instead of waiting an hour for me.</p>

@@ -18,9 +18,11 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/playfairdisplay/PlayfairDisplay-VF.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/tokens.css?v=20260925">
-<link rel="stylesheet" href="css/site.css?v=20260925">
-<script src="js/consent.js?v=20260925" defer></script>
+<link rel="alternate" type="application/rss+xml" title="Bartosz Kibiłko · Blog" href="/feed.xml">
+<link rel="stylesheet" href="css/tokens.css?v=20260925-2">
+<link rel="stylesheet" href="css/site.css?v=20260925-2">
+<script src="js/consent.js?v=20260925-2" defer></script>
+<script src="js/nav.js?v=20260925-2" defer></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Bartosz Kibiłko","url":"https://www.kibilko.pl/","jobTitle":"AI-native software architect","knowsAbout":["PHP","Backend architecture","AI agents","AI-assisted software development","Frontend development","UI design"],"knowsLanguage":["pl","en"],"sameAs":["https://www.linkedin.com/in/bartkibilko/","https://github.com/bartkibilko"]}
 </script>
@@ -30,11 +32,14 @@
 <div class="page">
 <header class="site-head">
   <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">K</span>Bartosz Kibiłko</a>
-  <nav aria-label="Main"><a href="/blog/">Blog</a><a href="/#about">About</a><a href="#contact">Contact</a></nav>
+  <nav aria-label="Main"><a href="/blog/">Blog</a><a href="/#about">About</a><a href="#contact">Contact</a><a href="/feed.xml">RSS</a></nav>
 </header>
 
+<div class="read read-home">
+<nav class="toc" data-toc aria-label="On this page"></nav>
+<div class="home-body">
 <main id="main">
-  <section class="hero" id="about">
+  <section class="hero" id="about" data-sec>
     <p class="label">SEC.01 · PROFILE</p>
     <h1>Bartosz <em>Kibiłko</em></h1>
     <p class="lede">AI-native software architect. I design and build backends and frontends with coding agents.</p>
@@ -42,13 +47,13 @@
     <p class="actions"><a class="btn primary" href="/blog/">Read the blog</a><a class="btn" href="mailto:bartosz@kibilko.pl">Get in touch</a></p>
   </section>
 
-  <section class="ai">
+  <section class="ai" id="workflow" data-sec>
     <p class="label">SEC.02 · WORKFLOW</p>
     <h2>AI-first since 2026</h2>
     <ul class="checks"><li>I design and build backends, frontends and the design around them, with coding agents as the default way to ship.</li><li>I run several agents in parallel and check their output with tests and code review.</li></ul>
   </section>
 
-  <section class="pillars">
+  <section class="pillars" id="topics" data-sec>
     <p class="label">SEC.03 · TOPICS</p>
     <h2>What I write about</h2>
     <div class="pillar-grid">
@@ -57,19 +62,21 @@
     </div>
   </section>
 
-  <section class="posts">
+  <section class="posts" id="notes" data-sec>
     <p class="label">SEC.04 · NOTES</p>
     <h2>Latest posts</h2>
     <ol class="post-list"><li><a href="/blog/the-work-moved-to-the-edges/"><span class="no">01</span><span class="t">The work moved to the edges</span><span class="m">24 Sep 2026 · 7 min</span></a></li></ol>
     <p class="more"><a href="/blog/">All posts →</a></p>
   </section>
 </main>
-<footer class="site-foot" id="contact">
+<footer class="site-foot" id="contact" data-sec>
   <p class="label">SEC.05 · CONTACT</p>
   <h2>Email, LinkedIn or GitHub</h2>
   <ul class="contact"><li><span class="k">E-mail</span><a href="mailto:bartosz@kibilko.pl">bartosz@kibilko.pl</a></li><li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/bartkibilko/" rel="me noopener">linkedin.com/in/bartkibilko</a></li><li><span class="k">GitHub</span><a href="https://github.com/bartkibilko" rel="me noopener">github.com/bartkibilko</a></li></ul>
   <p class="fine">© 2026 Bartosz Kibiłko. Po polsku na życzenie. Built over coffee.<button type="button" class="linklike" data-consent-open hidden>Cookie settings</button></p>
 </footer>
+</div>
+</div>
 </div>
 </body>
 </html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Bartosz Kibiłko · Blog</title>
+  <link>https://www.kibilko.pl/blog/</link>
+  <atom:link href="https://www.kibilko.pl/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Notes on working with AI agents and on PHP. Short posts that take a side and show numbers.</description>
+  <language>en</language>
+  <lastBuildDate>Thu, 24 Sep 2026 00:00:00 +0000</lastBuildDate>
+  <!-- New posts go on top. Copy the item, keep pubDate in RFC 822 format and update lastBuildDate. -->
+  <item>
+    <title>The work moved to the edges</title>
+    <link>https://www.kibilko.pl/blog/the-work-moved-to-the-edges/</link>
+    <guid isPermaLink="true">https://www.kibilko.pl/blog/the-work-moved-to-the-edges/</guid>
+    <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+    <description>Over the last year, the middle of a programmer's day disappeared. What is left is planning at one end and verification at the other, and the industry has not yet worked out who will be good at either in ten years.</description>
+  </item>
+</channel>
+</rss>

@@ -4,7 +4,7 @@
 <!-- POST TEMPLATE. Lives in _templates/ so GitHub Pages (Jekyll) does not publish it.
      To publish: copy to blog/<slug>/index.html, drop the noindex meta, replace every ALL-CAPS placeholder,
      add the post as a new <li> at the top of the <ol class="post-list"> in blog/index.html and in "Latest posts" in index.html,
-     and to sitemap.xml. After changing css/ or js/, bump the ?v= on their links in every page. Give every <h2> a short kebab-case id: js/nav.js builds the contents rail from them. -->
+     to sitemap.xml and as a new <item> at the top of feed.xml. After changing css/ or js/, bump the ?v= on their links in every page. Give every <h2> a short kebab-case id: js/nav.js builds the contents rail from them. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>POST TITLE | Bartosz Kibiłko</title>
@@ -23,17 +23,18 @@
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="preload" href="../../fonts/playfairdisplay/PlayfairDisplay-VF.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../../css/tokens.css?v=20260925">
-<link rel="stylesheet" href="../../css/site.css?v=20260925">
-<script src="../../js/consent.js?v=20260925" defer></script>
-<script src="../../js/nav.js?v=20260925" defer></script>
+<link rel="alternate" type="application/rss+xml" title="Bartosz Kibiłko · Blog" href="/feed.xml">
+<link rel="stylesheet" href="../../css/tokens.css?v=20260925-2">
+<link rel="stylesheet" href="../../css/site.css?v=20260925-2">
+<script src="../../js/consent.js?v=20260925-2" defer></script>
+<script src="../../js/nav.js?v=20260925-2" defer></script>
 </head>
 <body class="dir-blueprint">
 <a class="skip" href="#main">Skip to content</a>
 <div class="page">
 <header class="site-head">
   <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">K</span>Bartosz Kibiłko</a>
-  <nav aria-label="Main"><a href="/blog/" aria-current="page">Blog</a><a href="/#about">About</a><a href="#contact">Contact</a></nav>
+  <nav aria-label="Main"><a href="/blog/" aria-current="page">Blog</a><a href="/#about">About</a><a href="#contact">Contact</a><a href="/feed.xml">RSS</a></nav>
 </header>
 
 <main id="main" class="read">
