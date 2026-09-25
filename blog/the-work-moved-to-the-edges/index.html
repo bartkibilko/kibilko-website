@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="../../css/tokens.css">
 <link rel="stylesheet" href="../../css/site.css">
 <script src="../../js/consent.js" defer></script>
+<script src="../../js/nav.js" defer></script>
 </head>
 <body class="dir-blueprint">
 <a class="skip" href="#main">Skip to content</a>
@@ -38,7 +39,8 @@
   <nav aria-label="Main"><a href="/blog/" aria-current="page">Blog</a><a href="/#about">About</a><a href="#contact">Contact</a></nav>
 </header>
 
-<main id="main">
+<main id="main" class="read">
+<nav class="toc" data-toc aria-label="On this page"></nav>
 <article class="post">
   <header class="post-head">
     <p class="label">NOTES · #01</p>
@@ -50,11 +52,11 @@
 <p>For most of my working life a day had a thick middle. There was some thinking in the morning and some checking in the evening, and in between, hours of typing. The typing was the job. Clients were billed for it, and juniors were hired to learn it.</p>
 <p>That middle is gone now. Since the start of 2026, coding agents have been writing the code I deliver. The hours did not disappear with it. They moved to the two ends of the day: deciding what should be built, and checking that what came back is right.</p>
 <p>I would like to say this was a clever choice. It was not much of a choice at all. The industry changed the price of code in about a year, and anyone who sells software work had to change with it. Clients saw what the tools could do. Deadlines shortened, and so did the patience for estimates built on hours of typing. Staying with the old way of working would have meant charging for something that had stopped being scarce.</p>
-<h2>Clients never bought code</h2>
+<h2 id="clients-never-bought-code">Clients never bought code</h2>
 <p>Chris Gregori put the change in one line: "Code is cheap now. Software isn't." The cost of producing code fell close to zero. The cost of building something that works for years inside a real business did not move.</p>
 <p>This is easy to forget from inside the job. For a long time developers described themselves by their tools, and job ads listed languages and frameworks as if the client cared which ones. The client never cared. A shop owner wants orders to go through on a busy Friday. A publisher wants the site up when the story breaks. What they pay for is a working solution and someone who answers for it. The stack was always our business, not theirs.</p>
 <p>Kent Beck saw the shape of this early. In 2023, he wrote that when a technology makes something cheap, most of the old skills lose their value and the few that remain become worth far more. Three years later that reads less like a forecast and more like a description of my week.</p>
-<h2>What the work looks like now</h2>
+<h2 id="what-the-work-looks-like-now">What the work looks like now</h2>
 <p>The best picture of this that I have seen comes from Kun Chen, in <a href="https://www.youtube.com/watch?v=iQyg-KypKAA&amp;t=1992s">a video about his agentic engineering workflow</a>. He draws one line from plan to implement to validate. Planning has two people and one agent. Implementation has three agents. Validation has two agents and one person. In the middle, he wrote, "continuous chunk of agent execution time for me to spin up more tasks." Agents already help with planning and with checking, but a person is present at the start and at the end. The long stretch of agent work in the middle is the time the developer uses to start the next tasks. My own version looks like this.</p>
 <figure class="fig"><svg class="fig-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" role="img" aria-labelledby="fig01-title fig01-desc">
   <title id="fig01-title">FIG.01 · Plan, implement, validate, 2026</title>
@@ -180,19 +182,19 @@
 <p><strong>Planning</strong> is where most of the day goes now. Agents help here too, reading the code and drafting the plan, but the decisions stay with people. A feature has to be cut into pieces that do not touch each other, so that several agents can work on them at the same time without tripping over one another. Each piece needs a clear description of what done means, which files it may change, and which it must leave alone. Peter Steinberger judges agent work by its "blast radius", meaning how much of the system one change touches. The plan is where the blast radius is decided. A vague task comes back as a large diff, and a large diff costs more to review than it saved to write.</p>
 <p><strong>Implementation</strong> belongs to the agents. Two or three of them run in parallel on separate pieces, and while they work, I plan the next task. They write tests along with the code, and they are very good at making those tests pass. That matters more than it sounds.</p>
 <p><strong>Verification</strong> is the other half of the job. Agents do the first pass, running the tests and reviewing each other's work, but the final decision cannot be delegated. Every run ends with a diff, and every diff has to be read by someone who knows what the business needs. If a change is merged unread, the agent made the decision and a person only signed it.</p>
-<h2>Answering from lunch</h2>
+<h2 id="answering-from-lunch">Answering from lunch</h2>
 <p>A lot of that work happens away from the desk. The agents keep going when I am not at the laptop, and Claude Code's remote control lets me reach the running sessions from my phone.</p>
 <p>On an ordinary day I go out for lunch while two or three agents are still working. Somewhere between ordering and paying, one of them stops with a question about a detail the plan left open. I answer in a sentence from the phone, and the session carries on. When I am back at the desk, the work has moved forward instead of waiting an hour for me.</p>
 <p>The questions are short, but answering them well takes knowing how the system should behave, and I know that because I built systems like it by hand for years. The author of ordep.dev wrote that "the biggest cost of code is understanding it, not writing it." Agents took away the writing. The understanding is still ours to pay for, and it has to be paid every time.</p>
-<h2>This is not vibe coding</h2>
+<h2 id="this-is-not-vibe-coding">This is not vibe coding</h2>
 <p>Simon Willison has been careful about one word. Vibe coding, in his definition, means building software while ignoring the code. What the diagram shows is the opposite: every result is read and tested by a person who answers for it before it reaches a client. The difference will matter more each year, because the industry will blame "AI code" for failures that are really failures to review.</p>
-<h2>The part that should worry us</h2>
+<h2 id="the-part-that-should-worry-us">The part that should worry us</h2>
 <p>The loop works for people who already know what a bad diff looks like. That knowledge came from somewhere, and the industry has just removed the place it came from.</p>
 <p>Lars Faye calls it the supervision paradox. The skills you need to supervise agents are the skills that agents stop you from practising. Someone who has spent years writing slow queries and debugging queues at night can live off that for a long time. Someone starting now will be asked to verify work they have never done.</p>
 <p>I started in 2012 as a junior developer on a busy regional news portal. I got the small tasks nobody senior wanted, and seniors reviewed my code and told me why it was bad. Nobody called that training, and nobody budgeted for it. It happened because the small tasks needed doing and a junior was cheaper than a senior. Agents now do those tasks in minutes, and the training that came along with them goes too. Steve Yegge wrote about the death of the junior developer in 2024. He was forecasting. Today it looks more like a hiring decision that companies make without noticing, by never opening the position.</p>
 <p>Teams change more peacefully. In teams of six to eight people, the pull request was also how the team learned the system: I read your code, you read mine, and after a year we both knew how the whole thing worked. When one person with agents ships what a team used to, nobody else reads the code. The code can be fine, and the shared understanding still does not form. Sean Goedecke argues that nobody ever fully understood a large codebase anyway, and he is partly right. But in the old systems, a few people understood large parts because they had built them. We are heading towards systems where nobody built any part.</p>
 <p>And there is the craft. Nolan Lawson wrote "We Mourn Our Craft", and many developers recognised themselves in it. I understand the grief without quite sharing it. I do not miss the typing. What I miss is being slow enough to know every line that shipped, which is a smaller loss and harder to defend in front of a client. Annie Vella describes the shift as moving from builder to orchestrator, and she suggests it can be a pendulum rather than a one-way door. I would like her to be right.</p>
-<h2>Where this leaves us</h2>
+<h2 id="where-this-leaves-us">Where this leaves us</h2>
 <p>Nobody asked developers whether they wanted this. The price of code dropped, clients noticed, and the work rearranged itself around the two things that stayed expensive: knowing what to build, and knowing whether it was built right. Adapting was the only reasonable answer, and the loop in the figure is what that adaptation looks like from the inside.</p>
 <p>The tools work. I use them every day and would not go back. But the industry built its seniors out of years of cheap, boring, hand-written work, and it has just made that work unnecessary. The planning and the verification at the edges of the diagram depend on judgment, and so far nobody has said where the next generation will get it.</p>
 
@@ -209,6 +211,10 @@
 <li>Nolan Lawson, <a href="https://nolanlawson.com/2026/02/07/we-mourn-our-craft/">We Mourn Our Craft</a>, 2026-02-07</li>
 <li>Annie Vella, <a href="https://annievella.com/posts/the-software-engineering-identity-crisis/">The Software Engineering Identity Crisis</a>, 2025-03-21</li>
 </ul></aside>
+  <nav class="post-end" aria-label="More">
+    <a href="/blog/"><p class="label">← All notes</p><span class="t">Back to the blog index</span></a>
+    <a href="#contact"><p class="label">Get in touch</p><span class="t">Email, LinkedIn or GitHub</span></a>
+  </nav>
 </article>
 </main>
 <footer class="site-foot" id="contact">
