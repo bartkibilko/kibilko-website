@@ -130,7 +130,7 @@ figure.fig figcaption{font-family:var(--font-mono);font-size:11px;letter-spacing
 .sources li{margin-bottom:var(--sp-2)}
 
 /* post navigation: contents rail, sticky strip with progress, mobile contents sheet (js/nav.js) */
-:root{--strip-h:52px}
+:root{--strip-h:52px;--nav-css:1} /* --nav-css: js/nav.js checks it so a stale cached site.css never gets an unstyled rail */
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .post h2,.post-head{scroll-margin-top:calc(var(--strip-h) + var(--sp-8))}

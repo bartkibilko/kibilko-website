@@ -4,6 +4,8 @@
   var article = document.querySelector('article.post');
   var rail = document.querySelector('nav.toc[data-toc]');
   if (!article || !rail) return;
+  // A cached older site.css has no navigation styles; leave the post as it was rather than show an unstyled list.
+  if (!getComputedStyle(document.documentElement).getPropertyValue('--nav-css').trim()) return;
 
   var postHead = article.querySelector('.post-head');
   var h2s = [].slice.call(article.querySelectorAll('h2[id]'));
