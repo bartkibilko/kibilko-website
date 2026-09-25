@@ -4,7 +4,7 @@
 <!-- POST TEMPLATE. Lives in _templates/ so GitHub Pages (Jekyll) does not publish it.
      To publish: copy to blog/<slug>/index.html, drop the noindex meta, replace every ALL-CAPS placeholder,
      add the post as a new <li> at the top of the <ol class="post-list"> in blog/index.html and in "Latest posts" in index.html,
-     and to sitemap.xml. -->
+     and to sitemap.xml. Give every <h2> a short kebab-case id: js/nav.js builds the contents rail from them. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>POST TITLE | Bartosz Kibiłko</title>
@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="../../css/tokens.css">
 <link rel="stylesheet" href="../../css/site.css">
 <script src="../../js/consent.js" defer></script>
+<script src="../../js/nav.js" defer></script>
 </head>
 <body class="dir-blueprint">
 <a class="skip" href="#main">Skip to content</a>
@@ -35,7 +36,8 @@
   <nav aria-label="Main"><a href="/blog/" aria-current="page">Blog</a><a href="/#about">About</a><a href="#contact">Contact</a></nav>
 </header>
 
-<main id="main">
+<main id="main" class="read">
+<nav class="toc" data-toc aria-label="On this page"></nav>
 <article class="post">
   <header class="post-head">
     <p class="label">NOTES · #NO</p>
@@ -48,7 +50,7 @@
 
   <p>Opening paragraph. Body text is about 680 px wide, set by the <code>--measure</code> variable.</p>
 
-  <h2>Subheading</h2>
+  <h2 id="subheading">Subheading</h2>
 
   <p>Text with a footnote<sup class="fn"><a id="fnref1" href="#fn1" aria-label="Footnote 1">1</a></sup>.</p>
 
@@ -60,6 +62,12 @@ declare(strict_types=1);
   <blockquote class="pull"><p>Pull quote.</p></blockquote>
 
   <aside class="footnotes"><p class="label">FOOTNOTE</p><ol><li id="fn1">Footnote text. <a href="#fnref1" aria-label="Back to text">↩</a></li></ol></aside>
+  <!-- End-of-post navigation. Once there is an older or newer post, point one cell at it:
+       <a href="/blog/SLUG/"><p class="label">Previous · #NO</p><span class="t">POST TITLE</span></a> -->
+  <nav class="post-end" aria-label="More">
+    <a href="/blog/"><p class="label">← All notes</p><span class="t">Back to the blog index</span></a>
+    <a href="#contact"><p class="label">Get in touch</p><span class="t">Email, LinkedIn or GitHub</span></a>
+  </nav>
 </article>
 </main>
 <footer class="site-foot" id="contact">
