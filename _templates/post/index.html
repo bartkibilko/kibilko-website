@@ -2,22 +2,35 @@
 <html lang="en">
 <head>
 <!-- POST TEMPLATE. Lives in _templates/ so GitHub Pages (Jekyll) does not publish it.
+     Provide an existing post image, its MIME type, real pixel dimensions and descriptive alt text.
+     Use the true publication date consistently in metadata, JSON-LD, visible time and RSS.
+     JSON-escape values in JSON-LD and HTML-escape attribute values.
      To publish: copy to blog/<slug>/index.html, drop the noindex meta, replace every ALL-CAPS placeholder,
      add the post as a new <li> at the top of the <ol class="post-list"> in blog/index.html and in "Latest posts" in index.html,
-     to sitemap.xml and as a new <item> at the top of feed.xml. After changing css/ or js/, bump the ?v= on their links in every page. Give every <h2> a short kebab-case id: js/nav.js builds the contents rail from them. -->
+     to sitemap.xml and as a new <item> at the top of feed.xml. After changing css/ or js/, bump the ?v= on their links in every page. Run python3 scripts/seo-check.py before requesting publication review. Give every <h2> a short kebab-case id: js/nav.js builds the contents rail from them. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>POST TITLE | Bartosz Kibiłko</title>
-<meta name="description" content="ONE-SENTENCE SUMMARY (up to 160 characters).">
+<meta name="description" content="ONE-SENTENCE SUMMARY.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://www.kibilko.pl/blog/SLUG/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Bartosz Kibiłko">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="POST TITLE">
-<meta property="og:description" content="ONE-SENTENCE SUMMARY (up to 160 characters).">
+<meta property="og:description" content="ONE-SENTENCE SUMMARY.">
 <meta property="og:url" content="https://www.kibilko.pl/blog/SLUG/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://www.kibilko.pl/blog/SLUG/IMAGE-FILENAME">
+<meta property="og:image:type" content="IMAGE-MIME-TYPE">
+<meta property="og:image:width" content="IMAGE-WIDTH">
+<meta property="og:image:height" content="IMAGE-HEIGHT">
+<meta property="og:image:alt" content="IMAGE-ALT-TEXT">
+<meta property="article:published_time" content="YYYY-MM-DD">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="POST TITLE">
+<meta name="twitter:description" content="ONE-SENTENCE SUMMARY.">
+<meta name="twitter:image" content="https://www.kibilko.pl/blog/SLUG/IMAGE-FILENAME">
+<meta name="twitter:image:alt" content="IMAGE-ALT-TEXT">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="../../favicon.ico" sizes="32x32">
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
@@ -28,6 +41,26 @@
 <link rel="stylesheet" href="../../css/site.css?v=20260926b">
 <script src="../../js/consent.js?v=20260926b" defer></script>
 <script src="../../js/nav.js?v=20260926b" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://www.kibilko.pl/blog/SLUG/#post",
+  "url": "https://www.kibilko.pl/blog/SLUG/",
+  "mainEntityOfPage": "https://www.kibilko.pl/blog/SLUG/",
+  "headline": "POST TITLE",
+  "description": "ONE-SENTENCE SUMMARY.",
+  "inLanguage": "en",
+  "datePublished": "YYYY-MM-DD",
+  "image": "https://www.kibilko.pl/blog/SLUG/IMAGE-FILENAME",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.kibilko.pl/#person",
+    "name": "Bartosz Kibiłko",
+    "url": "https://www.kibilko.pl/"
+  }
+}
+</script>
 </head>
 <body class="dir-blueprint">
 <a class="skip" href="#main">Skip to content</a>
@@ -44,7 +77,7 @@
     <p class="label">NOTES · #NO</p>
     <h1>POST TITLE</h1>
     <p class="dek">One sentence on why this is worth reading.</p>
-    <p class="meta"><span>Bartosz Kibiłko</span><time datetime="YYYY-MM-DD">D Month YYYY</time><span>N min read</span></p>
+    <p class="meta"><a href="/#about" style="color:inherit;text-decoration:none">Bartosz Kibiłko</a><time datetime="YYYY-MM-DD">D Month YYYY</time><span>N min read</span></p>
   </header>
 
   <aside class="tldr"><p class="label">TL;DR</p><ul><li>First takeaway.</li><li>Second takeaway.</li></ul></aside>
