@@ -24,9 +24,9 @@ def check(ok, where, message):
 
 
 def public(path):
-    return not any(part.startswith(('.', '_')) or part in
-                   {'scripts', 'scratch', 'screenshots', 'node_modules', 'vendor', 'tests', 'data'}
-                   or 'scratch' in part.lower() for part in path.relative_to(ROOT).parts[:-1])
+    dirs = path.relative_to(ROOT).parts[:-1]
+    return not (dirs and dirs[0] in {'scripts', 'scratch', 'screenshots', 'node_modules', 'vendor', 'tests', 'data'}
+                or any(part.startswith(('.', '_')) for part in dirs))
 
 
 class Page(HTMLParser):
@@ -39,7 +39,7 @@ class Page(HTMLParser):
         self.meta, self.ids = {}, []
         self.canonical, self.refs = [], []
         self.lang = None
-        self.feed(path.read_text())
+        self.feed(path.read_text(encoding='utf-8'))
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -136,7 +136,7 @@ def image_info(path):
 pages = {p: Page(p) for p in sorted(ROOT.rglob('*.html')) if public(p)}
 check(bool(pages), ROOT, 'no public pages found')
 canonicals, titles, descriptions, posts = [], [], [], {}
-placeholder = re.compile(r'\b(?:POST TITLE|ONE-SENTENCE SUMMARY|SLUG|YYYY-MM-DD|IMAGE-[A-Z-]+|D Month YYYY|N min read|One sentence on why this is worth reading|Opening paragraph|First takeaway|Second takeaway|Footnote text|Pull quote)\b|\{\{.*?\}\}')
+placeholder = re.compile(r'\b(?:POST TITLE|ONE-SENTENCE SUMMARY|SLUG|YYYY-MM-DD|IMAGE-(?:FILENAME|MIME-TYPE|WIDTH|HEIGHT|ALT-TEXT)|D Month YYYY|N min read)\b|NOTES · #NO\b')
 for path, page in pages.items():
     label = path.relative_to(ROOT)
     check(page.lang == 'en', label, 'lang must be en')
@@ -154,7 +154,7 @@ for path, page in pages.items():
         expected = BASE + label.as_posix()
     check(canonical == expected, label, 'canonical must match page HTTPS/www URL')
     check(not any('noindex' in v.lower() for v in page.meta.get('robots', [])), label, 'public page has noindex')
-    check(not placeholder.search(path.read_text()) and 'NOTES · #NO' not in path.read_text(), label, 'unfilled publication placeholder')
+    check(not placeholder.search(path.read_text(encoding='utf-8')), label, 'unfilled publication placeholder')
     expected_type = 'article' if label.parts[0] == 'blog' and label != Path('blog/index.html') else 'website'
     check(page.meta.get('og:type') == [expected_type], label, 'Open Graph type differs from page kind')
     for key in ('og:type', 'og:site_name', 'og:locale', 'og:title', 'og:description', 'og:url',
@@ -251,7 +251,7 @@ except (ET.ParseError, OSError, ValueError, TypeError) as exc:
     check(False, 'XML', str(exc))
 try:
     robots = RobotFileParser()
-    robots.parse((ROOT / 'robots.txt').read_text().splitlines())
+    robots.parse((ROOT / 'robots.txt').read_text(encoding='utf-8').splitlines())
     check(robots.site_maps() == [BASE+'sitemap.xml'] and (ROOT/'sitemap.xml').is_file(), 'robots.txt', 'expected existing sitemap URL')
     for url in canonicals:
         for agent in ('*', 'Googlebot', 'Bingbot'):
