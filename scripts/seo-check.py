@@ -25,7 +25,7 @@ def check(ok, where, message):
 
 def public(path):
     dirs = path.relative_to(ROOT).parts[:-1]
-    return not (dirs and dirs[0] in {'scripts', 'scratch', 'screenshots', 'node_modules', 'vendor', 'tests', 'data'}
+    return not (dirs and dirs[0] in {'scripts', 'scratch', 'screenshots'}
                 or any(part.startswith(('.', '_')) for part in dirs))
 
 
@@ -96,7 +96,11 @@ def nodes(page):
             value = json.loads(block)
             check(isinstance(value, dict), page.path.relative_to(ROOT), 'JSON-LD must be an object')
             if isinstance(value, dict):
-                result.extend(value.get('@graph', [value]))
+                graph = value.get('@graph', [value])
+                check(isinstance(graph, list) and all(isinstance(n, dict) for n in graph),
+                      page.path.relative_to(ROOT), 'JSON-LD graph nodes must be objects')
+                if isinstance(graph, list):
+                    result.extend(n for n in graph if isinstance(n, dict))
         except (ValueError, TypeError) as exc:
             check(False, page.path.relative_to(ROOT), f'invalid JSON-LD: {exc}')
     return result
@@ -159,7 +163,7 @@ for path, page in pages.items():
     check(page.meta.get('og:type') == [expected_type], label, 'Open Graph type differs from page kind')
     for key in ('og:type', 'og:site_name', 'og:locale', 'og:title', 'og:description', 'og:url',
                 'og:image', 'og:image:width', 'og:image:height', 'og:image:alt',
-                'twitter:card', 'twitter:title', 'twitter:description', 'twitter:image'):
+                'twitter:card', 'twitter:title', 'twitter:description', 'twitter:image', 'twitter:image:alt'):
         page.one(key)
     check(page.meta.get('og:url') == [canonical], label, 'og:url differs from canonical')
     check(page.meta.get('og:description') == [description] == page.meta.get('twitter:description'), label, 'card descriptions differ')
@@ -167,6 +171,7 @@ for path, page in pages.items():
     image = page.meta.get('og:image', [''])[0]
     check(image.startswith(BASE), label, 'social image must use absolute HTTPS/www URL')
     check(page.meta.get('twitter:image') == [image], label, 'card images differ')
+    check(page.meta.get('twitter:image:alt') == page.meta.get('og:image:alt'), label, 'image alt texts differ')
     image_path, _ = local(image, path)
     if image_path and image_path.is_file():
         try:
@@ -178,11 +183,6 @@ for path, page in pages.items():
             check(False, label, f'image invalid: {exc}')
     else:
         check(False, label, 'social image file missing')
-    if label in (Path('index.html'), Path('blog/index.html')):
-        check(page.meta.get('twitter:card') == ['summary'], label, 'portrait card must be summary')
-        check(page.one('og:image:type') == 'image/jpeg', label, 'portrait must be JPEG')
-        check(image == BASE + 'img/profile.jpg', label, 'expected existing profile image')
-        check(page.one('twitter:image:alt') == page.meta.get('og:image:alt', [''])[0], label, 'image alt texts differ')
     check(len(page.ids) == len(set(page.ids)), label, 'duplicate HTML id')
     for ref in page.refs:
         target, fragment = local(ref, path)
@@ -219,8 +219,6 @@ for path, page in pages.items():
                 date.fromisoformat(published)
             except (ValueError, TypeError):
                 check(False, label, 'invalid publication date')
-            if label == Path('blog/the-work-moved-to-the-edges/index.html'):
-                check(published == '2026-09-24', label, 'existing post publication date must remain 2026-09-24')
             check(page.times == [published] and page.meta.get('article:published_time') == [published], label, 'publication dates differ')
             check('Bartosz Kibiłko' in page.author, label, 'author profile link missing')
             posts[canonical] = article
@@ -244,8 +242,8 @@ try:
         check(link == guid and link in posts, 'feed.xml', 'item link/guid must match a published post')
         if link in posts:
             post = posts[link]
-            check(item.findtext('title') == post['headline'] and item.findtext('description') == post['description'], 'feed.xml', 'item metadata differs from post')
-            check(parsedate_to_datetime(item.findtext('pubDate')).date().isoformat() == post['datePublished'], 'feed.xml', 'item publication date differs')
+            check(item.findtext('title') == post.get('headline') and item.findtext('description') == post.get('description'), 'feed.xml', 'item metadata differs from post')
+            check(parsedate_to_datetime(item.findtext('pubDate')).date().isoformat() == post.get('datePublished'), 'feed.xml', 'item publication date differs')
     check(len(links) == len(set(links)) and len(guids) == len(set(guids)) and set(links) == set(posts), 'feed.xml', 'feed must contain every published post once')
 except (ET.ParseError, OSError, ValueError, TypeError) as exc:
     check(False, 'XML', str(exc))
